@@ -1,13 +1,72 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Oregon</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+<body class="blue-grey darken-4">
+  <div id="full">
+    <nav class="blue-grey darken-3">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Oregon</a>
+        <ul id="nav-mobile" class="left">
+          <li><a href="#">About</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="#">Hamburger</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="page-contain white-text">
+      <div class="roundscreen">
+        <div class="text-contain">
+          <p v-for="line in lines">
+            <span v-if="line" class="grey-text text-darken-2">~$ </span>
+            <span v-else><br></span>
+            <span>{{ line }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
+<script type="text/javascript">
+  const LINES = 20;
+
+  var data = {
+    lines: []
+  }
+
+  var methods = {
+
+  }
+
+  function initLines() {
+    for (let i = 0; i < LINES; i++) {
+      data.lines.push('')
+    }
+  }
+
+  function writeLine(line) {
+    data.lines.push(line);
+  }
+
+  var vm = new Vue({
+    el: '#full',
+    data: data,
+    methods: methods
+  })
+
+  initLines()
+  writeLine('Greetings traveller!')
+  writeLine('Please wait as we prepare the general store...')
+</script>
 
 </html>

@@ -1,8 +1,58 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Space Mono", monospace;
 }
 
 a {
   color: #00B7FF;
 }
+
+html, body { 
+  margin:0;
+  padding:0; 
+  overflow:hidden; 
+  width: 100%; 
+  height: 100%;
+  
+}
+
+.roundscreen {
+  border-radius: 10px;
+  background: #0B0E10;
+  vertical-align:middle;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-contain {
+  margin-top: 1%;
+}
+
+.text-contain {
+  width: 100%;
+  /*display: inline-block;*/
+  word-wrap: break-word;
+  position: absolute;
+  bottom: 0;
+  padding: 3%;
+}
+
+.text-contain p {
+  margin: 0;
+}
+
+@media screen and (orientation:portrait) { 
+  .roundscreen {
+    width: 95%;
+    height: 60%;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .roundscreen {
+    width: 80%;
+    height: 70%;
+  }
+}
+
