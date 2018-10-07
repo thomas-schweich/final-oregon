@@ -32,7 +32,7 @@
           <p v-for="line in main.lines">
             <template v-if="line.type === 'input'">
                 <span class="grey-text text-darken-2">> </span>
-                <span class="input">{{ line.text }}<span v-if="line.active">_</span></span> 
+                <span class="input">{{ line.text }}<span v-if="line.active" class="cursor">_</span></span> 
             </template>
             <template v-else-if="line.type === 'output'">
               <span class="grey-text text-darken-2">~$ </span>
@@ -47,7 +47,7 @@
 </body>
 
 <script type="text/javascript">
-  const LINES = 20
+  const LINES = 30
   var main = new term()
   var data = {
     main: main,
