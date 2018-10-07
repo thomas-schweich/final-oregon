@@ -1,0 +1,37 @@
+{
+    "locations": [
+        {
+            "name": "Saint Louis, MO",
+            "features": ["general_store"],
+            "distance": 0
+        },
+        {
+            
+        }
+    ],
+    "actions": {
+        "hunt": {
+            "prompts": ["WHAM", "BANG", "POW"]
+        }
+    },
+    "items": [
+        {
+
+        }
+    ],
+    "events": [
+        {
+
+        }
+    ],
+    "diseases": [
+        {
+
+        }
+    ],
+    "occupations": [
+        {
+
+        }
+    ]
+}

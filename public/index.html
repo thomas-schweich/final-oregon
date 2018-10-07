@@ -5,13 +5,16 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/term.js"></script>
 </head>
 
 <body class="blue-grey darken-4">
-  <div id="full">
+  <div id="term-page">
     <nav class="blue-grey darken-3">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center">Oregon</a>
@@ -19,17 +22,23 @@
           <li><a href="#">About</a></li>
         </ul>
         <ul class="right">
-          <li><a href="#">Hamburger</a></li>
+          <li><a href="#"><i class="material-icons">menu</i></a></li>
         </ul>
       </div>
     </nav>
     <div class="page-contain white-text">
       <div class="roundscreen">
         <div class="text-contain">
-          <p v-for="line in lines">
-            <span v-if="line" class="grey-text text-darken-2">~$ </span>
+          <p v-for="line in main.lines">
+            <template v-if="line.type === 'input'">
+                <span class="grey-text text-darken-2">> </span>
+                <span class="input">{{ line.text }}<span v-if="line.active">_</span></span> 
+            </template>
+            <template v-else-if="line.type === 'output'">
+              <span class="grey-text text-darken-2">~$ </span>
+              <span class="written">{{ line.text }}</span>
+            </template>
             <span v-else><br></span>
-            <span>{{ line }}</span>
           </p>
         </div>
       </div>
@@ -38,35 +47,49 @@
 </body>
 
 <script type="text/javascript">
-  const LINES = 20;
-
+  const LINES = 20
+  var main = new term()
   var data = {
-    lines: []
-  }
+    main: main,
+    game: {
 
-  var methods = {
+    },
+    player: {
 
-  }
-
-  function initLines() {
-    for (let i = 0; i < LINES; i++) {
-      data.lines.push('')
     }
   }
 
-  function writeLine(line) {
-    data.lines.push(line);
+  var methods = {
+    promptHunt: function () {
+      hunt = game.actions.hunt
+      prompt = Math.floor(Math.random() * hunt.prompts.length)
+      var response = out.prompt(hunt.prompts[prompt])
+    }
   }
 
   var vm = new Vue({
-    el: '#full',
+    el: '#term-page',
     data: data,
     methods: methods
   })
 
-  initLines()
-  writeLine('Greetings traveller!')
-  writeLine('Please wait as we prepare the general store...')
+  async function startGame () {
+    data.main.writeLines([
+      'Greetings traveller!',
+      'Would you like to sign in with:',
+      ' (1) Google',
+      ' (2) Facebook',
+      ' (3) Continue without signing in',
+      'If you do not sign in, your progress cannot be saved.'
+    ])
+    var service = await data.main.readLine()
+    data.main.writeLine('Connecting...')
+  }
+  
+  startGame().then(function() {
+    data.main.writeLine('Exited startGame')
+  })
+
 </script>
 
 </html>
