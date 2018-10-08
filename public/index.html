@@ -107,6 +107,7 @@
         } catch {
           term.writeLine('Invalid save number: "' + sn + '"')
           term.writeLine('Please enter your Save Number below:')
+          sn = await term.readLine()
         }
       }
       while (true) {
