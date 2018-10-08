@@ -26,33 +26,56 @@ html, body {
 }
 
 .page-contain {
-  margin-top: 5%;
+  margin-top: 2%;
+  width: 75%;
+  float: right;
 }
 
 .text-contain {
-  width: 100%;
+  width: 100%; 
   /*display: inline-block;*/
   word-wrap: break-word;
   position: absolute;
   bottom: 0;
   padding: 3%;
+  overflow: hidden;
 }
 
 .text-contain p {
   margin: 0;
+  z-index: 0;
+  position: relative;
+}
+
+.info {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+
+.console-footer {
+  position: relative;
+  width: auto;
+  height: 20%;
+}
+
+.window-header {
+  width: 100%;
+  text-align: center;
 }
 
 @media screen and (orientation:portrait) { 
   .roundscreen {
     width: 95%;
-    height: 60%;
+    height: 85%;
   }
 }
 
 @media screen and (orientation:landscape) {
   .roundscreen {
-    width: 80%;
-    height: 70%;
+    width: 95%;
+    height: 85%;  
   }
 }
 

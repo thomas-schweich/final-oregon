@@ -1,4 +1,4 @@
-function term() {
+function Term() {
     this.lines = []
     for (let i = 0; i < LINES; i++) {
         this.lines.push({
@@ -7,7 +7,7 @@ function term() {
     }
 }
 
-term.prototype.writeLine = function (line) {
+Term.prototype.writeLine = function (line) {
     this.lines.push({
         type: 'output',
         text: line
@@ -15,13 +15,13 @@ term.prototype.writeLine = function (line) {
     this.lines.shift()
 }
 
-term.prototype.writeLines = function (lines) {
+Term.prototype.writeLines = function (lines) {
     for (let line of lines) {
         this.writeLine(line)
     }
 }
 
-term.prototype.readLine = async function () {
+Term.prototype.readLine = async function () {
     var result = null
     var timeout = null
     var line = {
@@ -35,6 +35,7 @@ term.prototype.readLine = async function () {
         if (e.keyCode == 13) { // ENTER
             result = line.text
         } else if (e.keyCode == 8) { // BACKSPACE
+            e.preventDefault()
             if (line.text.length > 0) {
                 line.text = line.text.slice(0, -1)
             }

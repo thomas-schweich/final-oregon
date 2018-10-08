@@ -26,13 +26,17 @@
         </ul>
       </div>
     </nav>
+    <div class="info blue-grey darken-2"></div>
     <div class="page-contain white-text">
       <div class="roundscreen">
+        <!-- <div class="window-header blue darken-2">
+          Oregon
+        </div> -->
         <div class="text-contain">
           <p v-for="line in main.lines">
             <template v-if="line.type === 'input'">
-                <span class="grey-text text-darken-2">> </span>
-                <span class="input">{{ line.text }}<span v-if="line.active" class="cursor">_</span></span> 
+              <span class="grey-text text-darken-2">> </span>
+              <span class="input">{{ line.text }}<span v-if="line.active" class="cursor">_</span></span>
             </template>
             <template v-else-if="line.type === 'output'">
               <span class="grey-text text-darken-2">~$ </span>
@@ -48,7 +52,7 @@
 
 <script type="text/javascript">
   const LINES = 30
-  var main = new term()
+  var main = new Term()
   var data = {
     main: main,
     game: {
@@ -73,23 +77,52 @@
     methods: methods
   })
 
-  async function startGame () {
-    data.main.writeLines([
-      'Greetings traveller!',
-      'Would you like to sign in with:',
-      ' (1) Google',
-      ' (2) Facebook',
-      ' (3) Continue without signing in',
-      'If you do not sign in, your progress cannot be saved.'
-    ])
-    var service = await data.main.readLine()
-    data.main.writeLine('Connecting...')
+  async function loadGame(sn) {
+    game = (await axios.get('/' + sn)).body.game
   }
-  
-  startGame().then(function() {
-    data.main.writeLine('Exited startGame')
-  })
 
+  async function newGame() {
+    game = (await axios.get('/new' + sn)).body.game
+  }
+
+
+  async function startGame(term) {
+    term.writeLines([
+      'Greetings traveller!',
+      'Would you like to',
+      ' (1) Start a new journey',
+      ' (2) Continue your travels'
+    ])
+    var choice = await data.main.readLine()
+    if (choice === '1') {
+      term.writeLine('One moment while your game is created...')
+      term.writeLine('Your Save Number is ' + await newGame())
+    } else if (choice === '2') {
+      term.writeLine('Excellent, please enter your Save Number below:')
+      var sn = await term.readLine()
+      var game = null
+      while (!game) {
+        try {
+          await loadGame(sn)
+        } catch {
+          term.writeLine('Invalid save number: "' + sn + '"')
+          term.writeLine('Please enter your Save Number below:')
+        }
+      }
+      while (true) {
+        await playTurn()
+      }
+    } else {
+      term.writeLine('Invalid response. Options are "1" or "2"')
+      await startGame(term)
+    }
+  }
+
+  startGame(main).then(function () {
+
+  }).catch(function () {
+    alert('Something went wrong. Please write down your save number if you have one, then reload the page.')
+  })
 </script>
 
 </html>
