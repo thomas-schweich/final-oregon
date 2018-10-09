@@ -81,6 +81,7 @@
   })
 
   async function playTurn(term) {
+    var player = data.player
     term.writeLine('You are in ' + player.location + ' at mile marker ' + player.miles)
     term.writeLine('Would you like to:')
     var locName = player.location
