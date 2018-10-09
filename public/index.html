@@ -64,10 +64,13 @@
   }
 
   var methods = {
-    promptHunt: function () {
+    hunt: function (term) {
       hunt = game.actions.hunt
       prompt = Math.floor(Math.random() * hunt.prompts.length)
-      var response = out.prompt(hunt.prompts[prompt])
+      // TODO
+    },
+    move: async function () {
+      player = await axios.get('/' + game.sn + '/next')
     }
   }
 
@@ -77,9 +80,28 @@
     methods: methods
   })
 
+  async function playTurn(term) {
+    term.writeLine('You are in ' + player.location + 'at mile marker ' + player.distance)
+    term.writeLine('Would you like to:')
+    var locName = player.location
+    var game = data.game
+    var loc_features = game.locations[location].features
+    var game_features = game.features
+    loc_features.foreach(function (e, i) {
+      term.writeLine('(' + (i + 1) + ') ' + e.description)
+    })
+    var response = 0
+    do {
+      if(response) term.writeLine('Invalid choice. Please enter one of the displayed numbers and press enter.')
+      response = Number.parseInt(await term.readLine())
+    } while(response < 0 || response > features.length)
+    // Look up the function in game.features based on the location indicated by the response:
+    await methods[game_features[loc_features[response - 1]].fun](term)
+  }
+
   async function loadGame(sn) {
     try {
-      game = (await axios.get('/' + sn)).data
+      player = (await axios.get('/' + sn)).data
       return true
     } catch(e) {
       return false
@@ -87,7 +109,7 @@
   }
 
   async function newGame() {
-    game = (await axios.get('/new' + sn)).data
+    player = (await axios.get('/new' + sn)).data
   }
 
 
@@ -95,9 +117,10 @@
     term.writeLines([
       'Greetings traveller!',
       'Would you like to',
-      ' (1) Start a new journey',
-      ' (2) Continue your travels'
+      '(1) Start a new journey',
+      '(2) Continue your travels'
     ])
+    data.game = await axios.get('/game.json')
     var choice = await data.main.readLine()
     if (choice === '1') {
       term.writeLine('One moment while your game is created...')
@@ -117,7 +140,7 @@
         }
       }
       while (true) {
-        await playTurn()
+        await playTurn(term)
       }
     } else {
       term.writeLine('Invalid response. Options are "1" or "2"')
