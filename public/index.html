@@ -104,10 +104,11 @@
       while (!game) {
         try {
           await loadGame(sn)
-        } catch {
+        } catch (e) {
           term.writeLine('Invalid save number: "' + sn + '"')
           term.writeLine('Please enter your Save Number below:')
           sn = await term.readLine()
+          console.error(e)
         }
       }
       while (true) {
