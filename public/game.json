@@ -44,11 +44,12 @@
             "prompts": ["WHAM", "BANG", "POW"]
         }
     },
-    "items": [
-        {
-
+    "items": {
+        "oxen": {
+            "price": 200,
+            "value": 100
         }
-    ],
+    },
     "events": [
         {
 

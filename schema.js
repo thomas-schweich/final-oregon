@@ -1,42 +1,55 @@
 var mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI)
 
+var inventory = {
+    oxen: Number,
+    ammunition: Number,
+    food: Number,
+    axles: Number
+}
 
 var player = {
     sn: String,
     name: String,
     turn: Number,
     miles: Number,
+    money: Number,
     location: String,
     status: String,
-    inventory: {
-        oxen: Number,
-        ammunition: Number
-    },
-    party: [String],
-    offers: [
-        {
-            name: String,
-            request: {
-                item: String,
-                amount: Number
-            },
-            sn: String
+    inprogress: [],
+    history: [{
+        turn: Number,
+        action: String,
+        info: String
+    }],
+    inventory: inventory,
+    party: [{
+        name: String,
+        diseases: [],
+        alive: Boolean
+    }],
+    offers: [{
+        name: String,
+        request: {
+            item: String,
+            amount: Number
         },
-    ],
-    nearby: [
-        {   
-            uid: String,
-            inventory: {
-                oxen: Number,
-                ammunition: Number
-            }
+        reward: {
+            item: String,
+            amount: Number
         },
-    ]
+        sn: String
+    }],
+    nearby: [{
+        name: String,   
+        sn: String,
+        inventory: inventory
+    }]
   }
 
 var playerSchema = new mongoose.Schema(player)
 var Player = mongoose.model('Player', playerSchema)
+exports.Player = Player
 
 /**
  * Adds an empty player to the database, returning its unique Save Number
@@ -48,9 +61,8 @@ exports.newPlayer = async function newPlayer(properties={}) {
         count = await Player.count({sn: sn}).exec()
     } while(count)
     var nplayer = new Player({sn: sn})
-    nplayer = {
-        ...nplayer,
-        ...properties
+    for (let p in properties) {
+        nplayer[p] = properties[p]
     }
     nplayer.save()
     return nplayer
@@ -61,19 +73,18 @@ exports.newPlayer = async function newPlayer(properties={}) {
  * @param {String} sn 
  */
 exports.getPlayer = async function getPlayer(sn) {
-    return await Player.findOne({sn: sn})
+    return await Player.findOne({sn: sn}).exec()
 }
 
 /**
  * Modifies the player with save number sn
- * Objects below the first level must be complete
+ * Properties must be top-level
  * @param {String} sn The player's Save Number
  */
 exports.modifyPlayer = async function modifyPlayer(sn, properties) {
     var player = await getPlayer(sn)
-    player = {
-        ...player,
-        ...properties
+    for(let p in properties) {
+        player[p] = properties[p]
     }
     player.save()
 }
