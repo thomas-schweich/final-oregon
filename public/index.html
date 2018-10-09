@@ -78,16 +78,16 @@
   })
 
   async function loadGame(sn) {
-    game = (await axios.get('/' + sn)).data
+    try {
+      game = (await axios.get('/' + sn)).data
+      return true
+    } catch(e) {
+      return false
+    }
   }
 
   async function newGame() {
-    try {
-      game = (await axios.get('/new' + sn)).data
-      return true
-    } catch (e) {
-      return false
-    }
+    game = (await axios.get('/new' + sn)).data
   }
 
 
