@@ -150,8 +150,9 @@
 
   startGame(main).then(function () {
 
-  }).catch(function () {
+  }).catch(function (e) {
     alert('Something went wrong. Please write down your save number if you have one, then reload the page.')
+    console.error(e)
   })
 </script>
 
