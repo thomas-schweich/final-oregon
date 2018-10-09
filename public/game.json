@@ -17,7 +17,7 @@
         },
         {
             "name": "Ft Kearney",
-            "features":[],
+            "features":["general_store"],
             "distance": 250
         },
         {
@@ -27,13 +27,82 @@
         },
         {
             "name": "Ft Laramie",
-            "features":[],
+            "features":["general_store"],
             "distance": 190
         },
         {
             "name": "Independence Rock",
             "features":[],
             "distance": 102
+        },
+        {
+            "name": "South Pass",
+            "features":[],
+            "distance": 0
+        },
+        {
+            "name": "Green River",
+            "features":[],
+            "distance": 57
+        },
+        {
+            "name": "Ft Bridger",
+            "features":["general_store"],
+            "distance": 125
+        },
+        {
+            "name": "Soda Springs (From green river)",
+            "features":[],
+            "distance": 144
+        },        {
+            "name": "Soda Springs (from ft bridger)",
+            "features":[],
+            "distance": 162
+        },
+        {
+            "name": "Ft Hall",
+            "features":["general_store"],
+            "distance": 182
+        },
+        {
+            "name": "Snake River Crossing",
+            "features":[],
+            "distance": 114
+        },
+        {
+            "name": "Ft Boise",
+            "features":["general_store"],
+            "distance": 160
+        },
+        {
+            "name": "Blue Mountains",
+            "features":[],
+            "distance": 0
+        },
+        {
+            "name": "Ft Walla Walla",
+            "features":["general_store"],
+            "distance": 55
+        },
+        {
+            "name": "The Dalles (from ft walla walla)",
+            "features":[],
+            "distance": 120
+        },
+        {
+            "name": "The Dalles (fro, blue mountans)",
+            "features":[],
+            "distance": 125
+        },
+        {
+            "name": "Barlow Toll Road",
+            "features":[],
+            "distance": 100
+        },
+        {
+            "name": "Columbia River",
+            "features":[],
+            "distance": 0
         },
         {
             
