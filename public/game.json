@@ -13,100 +13,79 @@
         {
             "name": "Big Blue River Crossing",
             "features":[],
-            "distance": 83
+            "distance": 185
         },
         {
             "name": "Ft Kearney",
             "features":["general_store"],
-            "distance": 250
+            "distance": 304
         },
         {
             "name": "Chimney Rock",
             "features":[],
-            "distance": 86
+            "distance": 554
         },
         {
             "name": "Ft Laramie",
             "features":["general_store"],
-            "distance": 190
+            "distance": 640
         },
         {
             "name": "Independence Rock",
             "features":[],
-            "distance": 102
+            "distance": 830
         },
         {
-            "name": "South Pass",
+            "name": "South Pass(this is a split)",
             "features":[],
-            "distance": 0
-        },
-        {
-            "name": "Green River",
-            "features":[],
-            "distance": 57
+            "distance": 950
         },
         {
             "name": "Ft Bridger",
             "features":["general_store"],
-            "distance": 125
+            "distance": 1075
         },
         {
-            "name": "Soda Springs (From green river)",
+            "name": "Soda Springs",
             "features":[],
-            "distance": 144
-        },        {
-            "name": "Soda Springs (from ft bridger)",
-            "features":[],
-            "distance": 162
+            "distance": 1237
         },
         {
             "name": "Ft Hall",
             "features":["general_store"],
-            "distance": 182
+            "distance": 1294
         },
         {
             "name": "Snake River Crossing",
             "features":[],
-            "distance": 114
+            "distance": 1476
         },
         {
             "name": "Ft Boise",
             "features":["general_store"],
-            "distance": 160
+            "distance": 1590
         },
         {
             "name": "Blue Mountains",
             "features":[],
-            "distance": 0
+            "distance": 1750
         },
         {
             "name": "Ft Walla Walla",
             "features":["general_store"],
-            "distance": 55
+            "distance": 1805
         },
         {
-            "name": "The Dalles (from ft walla walla)",
+            "name": "The Dalles",
             "features":[],
-            "distance": 120
-        },
-        {
-            "name": "The Dalles (fro, blue mountans)",
-            "features":[],
-            "distance": 125
+            "distance": 1925
         },
         {
             "name": "Barlow Toll Road",
             "features":[],
-            "distance": 100
-        },
-        {
-            "name": "Columbia River",
-            "features":[],
-            "distance": 0
-        },
-        {
-            
+            "distance": 2025
         }
+
     ],
     "actions": {
         "hunt": {
