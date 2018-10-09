@@ -87,9 +87,15 @@
         }
 
     ],
-    "actions": {
+    "features": {
         "hunt": {
+            "fun": "hunt",
+            "description": "Go hunting",
             "prompts": ["WHAM", "BANG", "POW"]
+        },
+        "general_store": {
+            "fun": "store",
+            "description": "Visit the General Store"
         }
     },
     "items": {
