@@ -48,9 +48,8 @@ exports.newPlayer = async function newPlayer(properties={}) {
         count = await Player.count({sn: sn}).exec()
     } while(count)
     var nplayer = new Player({sn: sn})
-    nplayer = {
-        ...nplayer,
-        ...properties
+    for (let p in properties) {
+        nplayer[p] = properties[p]
     }
     nplayer.save()
     return nplayer
@@ -61,7 +60,7 @@ exports.newPlayer = async function newPlayer(properties={}) {
  * @param {String} sn 
  */
 exports.getPlayer = async function getPlayer(sn) {
-    return await Player.findOne({sn: sn})
+    return await Player.findOne({sn: sn}).exec()
 }
 
 /**
@@ -71,9 +70,8 @@ exports.getPlayer = async function getPlayer(sn) {
  */
 exports.modifyPlayer = async function modifyPlayer(sn, properties) {
     var player = await getPlayer(sn)
-    player = {
-        ...player,
-        ...properties
+    for(let p in properties) {
+        player[p] = properties[p]
     }
     player.save()
 }
