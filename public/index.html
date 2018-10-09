@@ -19,7 +19,24 @@
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center">Oregon</a>
         <ul id="nav-mobile" class="left">
-          <li><a href="#">About</a></li>
+          <li><a href="#modalAbout">About</a></li>
+
+          <div id="modalAbout" class="modal">
+            <div class="modal-content">
+              <h4>About Oregon Trail MMO</h4>
+              <p>This is the final project for CS4241 - Webware designed by Thomas Schweich, Alex Hard, and Dan Wensley.
+                Oregon trail is a classic game irst designed in 1971, with numerous iterations made in later years. This version is designed off of the original text based 1971 version,
+                with some modern elements added from later games. Where this version differs is through its interface and multiplayer opportunities. This website has been designed to 
+                replicate the look and feel of a computer the first Oregon Trail was made for, the xerox sigma 9. This computer used a rounded squre monitor that was vector based rather
+                than pizel based. We have attempted to replicate that through font and CSS choices. Further this version allows players to interact and trade with each other, provided they
+                are in the same location. 
+              </p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
         </ul>
         <ul class="right">
           <li><a href="#"><i class="material-icons">menu</i></a></li>
@@ -51,6 +68,12 @@
 </body>
 
 <script type="text/javascript">
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
+
   const LINES = 30
   var main = new Term()
   var data = {
