@@ -60,7 +60,7 @@ exports.newPlayer = async function newPlayer(properties={}) {
  * Get a player by Save Number
  * @param {String} sn 
  */
-exports.getplayer = async function getPlayer(sn) {
+exports.getPlayer = async function getPlayer(sn) {
     return await Player.findOne({sn: sn})
 }
 
