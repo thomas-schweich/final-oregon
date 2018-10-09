@@ -70,7 +70,7 @@
       // TODO
     },
     move: async function () {
-      player = await axios.get('/' + game.sn + '/next')
+      data.player = await axios.get('/' + game.sn + '/next')
     }
   }
 
@@ -81,7 +81,7 @@
   })
 
   async function playTurn(term) {
-    term.writeLine('You are in ' + player.location + 'at mile marker ' + player.distance)
+    term.writeLine('You are in ' + player.location + ' at mile marker ' + player.miles)
     term.writeLine('Would you like to:')
     var locName = player.location
     var game = data.game
@@ -101,7 +101,7 @@
 
   async function loadGame(sn) {
     try {
-      player = (await axios.get('/' + sn)).data
+      data.player = (await axios.get('/' + sn)).data
       return true
     } catch(e) {
       return false
@@ -109,7 +109,7 @@
   }
 
   async function newGame() {
-    player = (await axios.get('/new' + sn)).data
+    data.player = (await axios.get('/new' + sn)).data
   }
 
 
