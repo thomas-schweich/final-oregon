@@ -1,9 +1,39 @@
 {
     "locations": [
         {
-            "name": "Saint Louis, MO",
+            "name": "Independence, MO",
             "features": ["general_store"],
             "distance": 0
+        },
+        {
+            "name": "Kansas River Crossing",
+            "features":[],
+            "distance": 102
+        },
+        {
+            "name": "Big Blue River Crossing",
+            "features":[],
+            "distance": 83
+        },
+        {
+            "name": "Ft Kearney",
+            "features":[],
+            "distance": 250
+        },
+        {
+            "name": "Chimney Rock",
+            "features":[],
+            "distance": 86
+        },
+        {
+            "name": "Ft Laramie",
+            "features":[],
+            "distance": 190
+        },
+        {
+            "name": "Independence Rock",
+            "features":[],
+            "distance": 102
         },
         {
             
