@@ -148,7 +148,8 @@
                 "bandages": 10
             },
             "death_chance": 0.005,
-            "death_message": "You died from infection of your wounded arm"
+            "death_message_self": "You died from infection of your wounded arm",
+            "death_message_others": " died from infection of their wounded arm"
         },
         {
             "name": "dysentery",
