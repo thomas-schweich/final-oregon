@@ -1,111 +1,110 @@
 {
-    "locations": [
-        {
+    "locations": [{
             "name": "Independence, MO",
             "features": ["general_store"],
             "distance": 0
         },
         {
             "name": "Kansas River Crossing",
-            "features":[],
+            "features": [],
             "distance": 102
         },
         {
             "name": "Big Blue River Crossing",
-            "features":[],
+            "features": [],
             "distance": 83
         },
         {
             "name": "Ft Kearney",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 250
         },
         {
             "name": "Chimney Rock",
-            "features":[],
+            "features": [],
             "distance": 86
         },
         {
             "name": "Ft Laramie",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 190
         },
         {
             "name": "Independence Rock",
-            "features":[],
+            "features": [],
             "distance": 102
         },
         {
             "name": "South Pass",
-            "features":[],
+            "features": [],
             "distance": 0
         },
         {
             "name": "Green River",
-            "features":[],
+            "features": [],
             "distance": 57
         },
         {
             "name": "Ft Bridger",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 125
         },
         {
             "name": "Soda Springs (From green river)",
-            "features":[],
+            "features": [],
             "distance": 144
-        },        {
+        }, {
             "name": "Soda Springs (from ft bridger)",
-            "features":[],
+            "features": [],
             "distance": 162
         },
         {
             "name": "Ft Hall",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 182
         },
         {
             "name": "Snake River Crossing",
-            "features":[],
+            "features": [],
             "distance": 114
         },
         {
             "name": "Ft Boise",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 160
         },
         {
             "name": "Blue Mountains",
-            "features":[],
+            "features": [],
             "distance": 0
         },
         {
             "name": "Ft Walla Walla",
-            "features":["general_store"],
+            "features": ["general_store"],
             "distance": 55
         },
         {
             "name": "The Dalles (from ft walla walla)",
-            "features":[],
+            "features": [],
             "distance": 120
         },
         {
             "name": "The Dalles (fro, blue mountans)",
-            "features":[],
+            "features": [],
             "distance": 125
         },
         {
             "name": "Barlow Toll Road",
-            "features":[],
+            "features": [],
             "distance": 100
         },
         {
             "name": "Columbia River",
-            "features":[],
+            "features": [],
             "distance": 0
         },
         {
-            
+
         }
     ],
     "features": {
@@ -125,19 +124,35 @@
             "value": 100
         }
     },
-    "events": [
+    "events": {
+        "bandits": {
+            "description": "You're being attacked by bandits!",
+            "time_penalty": 1,
+            "fun": "bandit_attack"
+        }
+    },
+    "diseases": [{
+            "name": "broken_arm",
+            "description_self": "You have a broken arm",
+            "description_others": " has a broken arm",
+            "time_penalty": 1,
+            "subtracts": {
+                "bandages": 10
+            },
+            "death_chance": 0.005,
+            "death_message": "You died from infection of your wounded arm"
+        },
         {
-
+            "name": "dysentery",
+            "time_penalty": 0,
+            "description_self": "You have dysentery",
+            "description_others": " has dysentery",
+            "subtracts": {},
+            "death_chance": 0.02,
+            "death_message": "You died of dysentery"
         }
     ],
-    "diseases": [
-        {
+    "occupations": [{
 
-        }
-    ],
-    "occupations": [
-        {
-
-        }
-    ]
+    }]
 }
