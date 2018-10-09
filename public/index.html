@@ -82,7 +82,12 @@
   }
 
   async function newGame() {
-    game = (await axios.get('/new' + sn)).data
+    try {
+      game = (await axios.get('/new' + sn)).data
+      return true
+    } catch (e) {
+      return false
+    }
   }
 
 
@@ -100,10 +105,10 @@
     } else if (choice === '2') {
       term.writeLine('Excellent, please enter your Save Number below:')
       var sn = await term.readLine()
-      var game = null
-      while (!game) {
+      var success = false
+      while (!success) {
         try {
-          await loadGame(sn)
+          success = await loadGame(sn)
         } catch (e) {
           term.writeLine('Invalid save number: "' + sn + '"')
           term.writeLine('Please enter your Save Number below:')
