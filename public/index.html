@@ -78,11 +78,11 @@
   })
 
   async function loadGame(sn) {
-    game = (await axios.get('/' + sn)).body.game
+    game = (await axios.get('/' + sn)).data
   }
 
   async function newGame() {
-    game = (await axios.get('/new' + sn)).body.game
+    game = (await axios.get('/new' + sn)).data
   }
 
 
