@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var schema = require('../schema')
 var plugin = require('../plugin')
-const game = require('public/game.json')
+const game = require('../public/game.json')
 
 var plugins = new plugin.PluginGroup()
 
@@ -37,7 +37,7 @@ plugins.addPlugin(new plugin.Plugin(
     return player.inprogress.length == 0
   },
   function(player, req, res) {
-    
+
   }
 ))
 
