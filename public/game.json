@@ -105,7 +105,31 @@
         "oxen": {
             "price": 200,
             "value": 100
-        }
+        },
+		"food" : {
+			"price": 0.2,
+            "value": 0.1
+		},
+		"clothing" : {
+			"price": 10,
+            "value": 5
+		},
+		"ammunition" : {
+			"price": 0.1,
+            "value": 0.05
+		},
+		"wagon wheel" : {
+			"price": 10,
+            "value": 5
+		},
+		"wagon axle" : {
+			"price": 10,
+            "value": 5
+		},
+		"wagon tongue" : {
+			"price": 10,
+            "value": 5
+		}
     },
     "events": {
         "bandits": {
@@ -139,29 +163,100 @@
             "fun": "thunder"
         }
     },
-    "diseases": [{
-            "name": "broken_arm",
-            "description_self": "You have a broken arm",
-            "description_others": " has a broken arm",
-            "time_penalty": 1,
-            "subtracts": {
-                "bandages": 10
-            },
-            "death_chance": 0.005,
-            "death_message_self": "You died from infection of your wounded arm",
-            "death_message_others": " died from infection of their wounded arm"
-        },
-        {
-            "name": "dysentery",
-            "time_penalty": 0,
-            "description_self": "You have dysentery",
-            "description_others": " has dysentery",
-            "subtracts": {},
-            "death_chance": 0.02,
-            "death_message": "You died of dysentery"
-        }
+    "diseases": [
+		{
+			"typhoid" : {
+				"name": "typhoid",
+				"description_self": "You have typhoid",
+				"description_others": " has typhoid",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from typhoid",
+				"death_message_others": " died from typhoid"
+			}
+		},
+		{
+			"cholera" : {
+				"name": "cholera",
+				"description_self": "You have cholera",
+				"description_others": " has cholera",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from cholera",
+				"death_message_others": " died from cholera"
+
+			}
+		},
+		{
+			"measles" : {
+				"name": "measles",
+				"description_self": "You have measles",
+				"description_others": " has measles",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from measles",
+				"death_message_others": " died from measles"
+			}
+		},
+		{	
+			"dysentary" : {
+				"name": "dysentary",
+				"description_self": "You have dysentary",
+				"description_others": " has dysentary",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from dysentary",
+				"death_message_others": " died from dysentary"
+			}
+		},
+		{
+			"fever" : {
+				"name": "fever",
+				"description_self": "You have a fever",
+				"description_others": " has a fever",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from fever",
+				"death_message_others": " died from fever"
+			}
+		}
     ],
     "occupations": [{
-
+		{
+			"doctor" : {
+				"name" : "Doctor",
+				"difficulty" : "Easy",
+				"money" : 1600
+			}
+		},
+		{
+			"carpenter" : {
+				"name" : "Carpenter",
+				"difficulty" : "Medium",
+				"money" : 800
+			}
+		},
+		{
+			"farmer" : {
+				"name" : "Farmer",
+				"difficulty" : "Hard",
+				"money" : 400
+			}
+		}
     }]
 }
