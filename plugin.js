@@ -17,7 +17,7 @@ exports.Plugin = function Plugin(label, validate, action) {
  * @param {Request} req 
  * @param {Response} res 
  */
-Plugin.prototype.handle = function(player, req, res) {
+exports.Plugin.prototype.handle = function(player, req, res) {
     if(this.validate(player)) {
         this.action(player, req, res)
     } else {
@@ -33,10 +33,10 @@ exports.PluginGroup = function PluginGroup() {
 }
 
 
-PluginGroup.prototype.handle = function(label, player, req, res) {
+exports.PluginGroup.prototype.handle = function(label, player, req, res) {
     this.plugins[label].handle(player, req, res)
 }
 
-PluginGroup.prototype.addPlugin = function (plugin) {
+exports.PluginGroup.prototype.addPlugin = function (plugin) {
     this.plugins[plugin.label] = plugin
 }
