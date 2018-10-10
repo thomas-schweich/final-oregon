@@ -44,6 +44,27 @@
       </div>
     </nav>
     <div class="info blue-grey darken-2 white-text">
+      <h5 class="center">Your Status</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>Miles</td>
+            <td>Money</td>
+            <td>Status</td>
+            <td>Location</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ player.miles }}</td>
+            <td>{{ player.money }}</td>
+            <td>{{ player.status}}</td>
+            <td>{{ player.location.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info blue-grey darken-2 white-text">
       <h5 class="center">Inventory</h5>
       <table>
         <thead>
@@ -53,9 +74,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in player.inventory">
-            <td>{{ item }}</td>
-            <td>{{ player.inventory[item] }}</td>
+          <tr v-for="items in player.inventory">
+            <td>{{ items }}</td>
+            <td>{{ player.inventory[items] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info blue-grey darken-2 white-text">
+      <h5 class="center">Party Status</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>Party Member</td>
+            <td>Status</td>
+            <td>Desc.</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="member in player.party">
+            <td>{{ member }}</td>
+            <td>{{ player.party[alive] }}</td>
+            <td>{{ player.party[diseases] }}</td>
           </tr>
         </tbody>
       </table>
