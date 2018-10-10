@@ -98,7 +98,7 @@
     var input = ''
     var response = null
     do {
-      response = await axios.post(player.nextURL, {
+      response = await axios.post(data.player.nextURL, {
         input: input
       }).data
       data.player = response.player
