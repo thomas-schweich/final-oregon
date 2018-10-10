@@ -36,12 +36,14 @@ TermEm.prototype.writeLines = function (lines) {
  * @param {Boolean} cont 
  */
 TermEm.prototype.end = function (player, nextPlugin='home', read=false, cont=true) {
+    player.nextURL = '/' + player.sn + '/' + nextPlugin
+    player.save()
     this.res.json({
         player: player,
         read: read,
         cont: cont,
         lines: this.lines,
-        nextURL: '/' + player.sn + '/' + nextPlugin
+        nextURL: player.nextURL
     })
 }
 
