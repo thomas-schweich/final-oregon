@@ -7,12 +7,14 @@ const game = require('../public/game.json')
 const store = require('./store')
 const home = require('./home')
 const next = require('./next')
+const hunt = require("./hunt")
 
 var plugins = new plugin.PluginGroup()
 
 TermEm.addPlugin('general_store', store.states)
 TermEm.addPlugin('home', home.states)
 TermEm.addPlugin('next', next.states)
+TermEm.addPlugin('hunt',hunt.states)
 
 function termHandle(player, req, res) {
   new TermEm(player, req, res).pickUp(player, req.body.input)
@@ -39,6 +41,14 @@ plugins.addPlugin(new plugin.Plugin(
   function(player) {
     return !(player.inprogress.filter((v) => !v.startsWith('home:')).length > 0)
   },
+  termHandle
+))
+
+plugins.addPlugin(new plugin.Plugin(
+  'hunt',
+  function(player) {
+    return player.location.features.includes('hunt')
+  }, 
   termHandle
 ))
 

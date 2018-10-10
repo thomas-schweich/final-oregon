@@ -19,6 +19,7 @@ var player = {
     turn: Number,
     miles: Number,
     money: Number,
+    huntPrompt: String,
     location: {
         name: String,
         features: [String],

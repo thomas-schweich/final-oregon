@@ -1,96 +1,92 @@
 {
     "locations": [{
             "name": "Independence, MO",
-            "features": ["next", "general_store","trade"],
+            "features": ["general_store","trade"],
             "distance": 0
         },
         {
             "name": "Kansas River Crossing",
-            "features": ["next", "hunt"],
+            "features": ["hunt"],
             "distance": 102
         },
         {
             "name": "Big Blue River Crossing",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 185
         },
         {
             "name": "Ft Kearney",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 304
         },
         {
             "name": "Chimney Rock",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 554
         },
         {
             "name": "Ft Laramie",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 640
         },
         {
             "name": "Independence Rock",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 830
         },
         {
             "name": "South Pass",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 950
         },
         {
             "name": "Ft Bridger",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 1075
         },
         {
             "name": "Soda Springs",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 1237
         },
         {
             "name": "Ft Hall",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 1294
         },
         {
             "name": "Snake River Crossing",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 1476
         },
         {
             "name": "Ft Boise",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 1590
         },
         {
             "name": "Blue Mountains",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 1750
         },
         {
             "name": "Ft Walla Walla",
-            "features":["next", "general_store","trade"],
+            "features":["general_store","trade"],
             "distance": 1805
         },
         {
             "name": "The Dalles",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 1925
         },
         {
             "name": "Barlow Toll Road",
-            "features":["next", "hunt"],
+            "features":["hunt"],
             "distance": 2025
         }
 
     ],
     "features": {
-        "next": {
-            "fun": "next",
-            "description": "Continue travelling"
-        },
         "hunt": {
             "fun": "hunt",
             "description": "Go hunting",
@@ -122,15 +118,15 @@
 			"price": 0.1,
             "value": 0.05
 		},
-		"wagon wheel" : {
+		"wagon_wheel" : {
 			"price": 10,
             "value": 5
 		},
-		"wagon axle" : {
+		"wagon_axle" : {
 			"price": 10,
             "value": 5
 		},
-		"wagon tongue" : {
+		"wagon_tongue" : {
 			"price": 10,
             "value": 5
 		}
@@ -252,7 +248,7 @@
 		}
     ],
     "occupations": [
-		{
+        {
 			"doctor" : {
 				"name" : "Doctor",
 				"difficulty" : "Easy",
