@@ -35,7 +35,7 @@ plugins.addPlugin(new plugin.Plugin(
 plugins.addPlugin(new plugin.Plugin(
   'home',
   function(player) {
-    return player.inprogress.length == 0
+    return !(player.inprogress.filter((v) => !v.startsWith('home:')).length > 0)
   },
   termHandle
 ))
@@ -71,7 +71,7 @@ router.get(/^\/?.{6}\/?$/, function(req, res) {
   })
 })
 
-router.get(/^\/?[a-z1-9]{6}\/[a-zA-Z]+\/?$/, function(req, res) {
+router.all(/^\/?.{6}\/.+\/?$/, function(req, res) {
   schema.getPlayer(urlSn(req.url)).then(function(player) {
     plugins.handle(req.url.split('/')[2], player, req, res)
   }).catch(function(e) {

@@ -43,7 +43,9 @@
         </ul>
       </div>
     </nav>
-    <div class="info blue-grey darken-2"></div>
+    <div class="info blue-grey darken-2">
+      <p>{{ player }}</p>
+    </div>
     <div class="page-contain white-text">
       <div class="roundscreen">
         <!-- <div class="window-header blue darken-2">
@@ -100,11 +102,11 @@
     do {
       response = await axios.post(data.player.nextURL, {
         input: input
-      }).data
-      data.player = response.player
-      term.writeLines(response.lines)
-      input = response.read ? await term.readLine() : ''
-    } while(response.cont)
+      })
+      data.player = response.data.player
+      term.writeLines(response.data.lines)
+      input = response.data.read ? await term.readLine() : ''
+    } while(response.data.cont)
   }
 
   async function loadGame(sn) {
@@ -152,7 +154,7 @@
       term.writeLine('Invalid response. Options are "1" or "2"')
       await startGame(term)
     }
-    await playGame()
+    await playGame(term)
     // TODO Code for victory here
   }
 

@@ -48,6 +48,18 @@ TermEm.prototype.end = function (player, nextPlugin='home', read=false, cont=tru
 }
 
 /**
+ * Terminate the current plugin state and end
+ * @param {Player} player
+ * @param {String} nextPlugin 
+ * @param {Boolean} read 
+ * @param {Boolean} cont 
+ */
+TermEm.prototype.terminate = function (player, nextPlugin='home', read=false, cont=true) {
+    this._removeStates(player)
+    this.end(player, nextPlugin, read, cont)
+}
+
+/**
  * Ask the client to come back to the same url with a new input based on the current prompts
  * Sets up 'callback' to the given state upon completion
  * Saves the given player after adjusting its inprogress field
@@ -56,18 +68,26 @@ TermEm.prototype.end = function (player, nextPlugin='home', read=false, cont=tru
  */
 TermEm.prototype.read = function (player, state='') {
     this._setState(player, state)
-    player.save()
     this.end(player, this._plugin, true, true)
 }
 
 /**
  * Set the state of the plugin for the given player
+ * Removes old state of current app
  * @param {Player} player 
  * @param {String} state 
  */
 TermEm.prototype._setState = function(player, state) {
-    player.inprogress = player.inprogress.filter((v) => !v.startsWith(this._plugin + ':'))
+    this._removeStates(player)
     player.inprogress.push(this._plugin + ':' + state)
+}
+
+/**
+ * Removes all active player states associated with the current app
+ * @param {Player} player 
+ */
+TermEm.prototype._removeStates = function(player) {
+    player.inprogress = player.inprogress.filter((v) => !v.startsWith(this._plugin + ':'))
 }
 
 /**

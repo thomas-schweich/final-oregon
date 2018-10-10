@@ -1,5 +1,7 @@
 var mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI)
+const game = require('./public/game.json')
+
+mongoose.connect(process.env.MONGODB_URI || require('./dev_db.json'))
 
 var inventory = {
     oxen: Number,
@@ -67,7 +69,22 @@ exports.newPlayer = async function newPlayer(properties={}) {
         sn = (Math.random() + 1).toString(36).substr(2, 6)
         count = await Player.count({sn: sn}).exec()
     } while(count)
-    var nplayer = new Player({sn: sn, nextURL: '/' + sn + '/home'})
+    var nplayer = new Player({
+        sn: sn, 
+        nextURL: '/' + sn + '/home',
+        location: game.locations[0],
+        inventory: {
+            oxen: 0,
+            bandages: 0 // TODO
+        },
+        miles: 0,
+        alive: true,
+        done: false,
+        money: 0,
+        name: "",
+        status: "",
+        turn: 1
+    })
     for (let p in properties) {
         nplayer[p] = properties[p]
     }
