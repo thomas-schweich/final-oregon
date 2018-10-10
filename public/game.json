@@ -1,87 +1,87 @@
 {
     "locations": [{
             "name": "Independence, MO",
-            "features": ["general_store"],
+            "features": ["general_store","trade"],
             "distance": 0
         },
         {
             "name": "Kansas River Crossing",
-            "features": [],
+            "features": ["hunt",],
             "distance": 102
         },
         {
             "name": "Big Blue River Crossing",
-            "features":[],
+            "features":["hunt"],
             "distance": 185
         },
         {
             "name": "Ft Kearney",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 304
         },
         {
             "name": "Chimney Rock",
-            "features":[],
+            "features":["hunt"],
             "distance": 554
         },
         {
             "name": "Ft Laramie",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 640
         },
         {
             "name": "Independence Rock",
-            "features":[],
+            "features":["hunt"],
             "distance": 830
         },
         {
-            "name": "South Pass(this is a split)",
-            "features":[],
+            "name": "South Pass",
+            "features":["hunt"],
             "distance": 950
         },
         {
             "name": "Ft Bridger",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 1075
         },
         {
             "name": "Soda Springs",
-            "features":[],
+            "features":["hunt"],
             "distance": 1237
         },
         {
             "name": "Ft Hall",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 1294
         },
         {
             "name": "Snake River Crossing",
-            "features":[],
+            "features":["hunt"],
             "distance": 1476
         },
         {
             "name": "Ft Boise",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 1590
         },
         {
             "name": "Blue Mountains",
-            "features":[],
+            "features":["hunt"],
             "distance": 1750
         },
         {
             "name": "Ft Walla Walla",
-            "features":["general_store"],
+            "features":["general_store","trade"],
             "distance": 1805
         },
         {
             "name": "The Dalles",
-            "features":[],
+            "features":["hunt"],
             "distance": 1925
         },
         {
             "name": "Barlow Toll Road",
-            "features":[],
+            "features":["hunt"],
             "distance": 2025
         }
 
@@ -95,44 +95,168 @@
         "general_store": {
             "fun": "store",
             "description": "Visit the General Store"
+        },
+        "trade": {
+            "fun": "trade",
+            "description": "Trade with other players"
         }
     },
     "items": {
         "oxen": {
             "price": 200,
             "value": 100
-        }
+        },
+		"food" : {
+			"price": 0.2,
+            "value": 0.1
+		},
+		"clothing" : {
+			"price": 10,
+            "value": 5
+		},
+		"ammunition" : {
+			"price": 0.1,
+            "value": 0.05
+		},
+		"wagon wheel" : {
+			"price": 10,
+            "value": 5
+		},
+		"wagon axle" : {
+			"price": 10,
+            "value": 5
+		},
+		"wagon tongue" : {
+			"price": 10,
+            "value": 5
+		}
     },
     "events": {
         "bandits": {
             "description": "You're being attacked by bandits!",
             "time_penalty": 1,
             "fun": "bandit_attack"
+        },
+        "wild_fruit": {
+            "description": "You've found some wild fruit!",
+            "time_penalty": 0,
+            "fun": "find_fruit"
+        },
+        "wagon_stolen": {
+            "description": "You're wagon has been stolen!",
+            "time_penalty": 1,
+            "fun": "wagon_stolen"
+        },
+        "wagon_broke": {
+            "description": "Your wagon broke!",
+            "time_penalty": 1,
+            "fun": "wagon_broke"
+        },
+        "washed_path": {
+            "description": "The path washed away ahead!",
+            "time_penalty": 1,
+            "fun": "washed_path"
+        },
+        "thunderstorm": {
+            "description": "You're stuck in a thunderstorm!",
+            "time_penalty": 1,
+            "fun": "thunder"
         }
     },
-    "diseases": [{
-            "name": "broken_arm",
-            "description_self": "You have a broken arm",
-            "description_others": " has a broken arm",
-            "time_penalty": 1,
-            "subtracts": {
-                "bandages": 10
-            },
-            "death_chance": 0.005,
-            "death_message_self": "You died from infection of your wounded arm",
-            "death_message_others": " died from infection of their wounded arm"
-        },
-        {
-            "name": "dysentery",
-            "time_penalty": 0,
-            "description_self": "You have dysentery",
-            "description_others": " has dysentery",
-            "subtracts": {},
-            "death_chance": 0.02,
-            "death_message": "You died of dysentery"
-        }
+    "diseases": [
+		{
+			"typhoid" : {
+				"name": "typhoid",
+				"description_self": "You have typhoid",
+				"description_others": " has typhoid",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from typhoid",
+				"death_message_others": " died from typhoid"
+			}
+		},
+		{
+			"cholera" : {
+				"name": "cholera",
+				"description_self": "You have cholera",
+				"description_others": " has cholera",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from cholera",
+				"death_message_others": " died from cholera"
+
+			}
+		},
+		{
+			"measles" : {
+				"name": "measles",
+				"description_self": "You have measles",
+				"description_others": " has measles",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from measles",
+				"death_message_others": " died from measles"
+			}
+		},
+		{	
+			"dysentary" : {
+				"name": "dysentary",
+				"description_self": "You have dysentary",
+				"description_others": " has dysentary",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from dysentary",
+				"death_message_others": " died from dysentary"
+			}
+		},
+		{
+			"fever" : {
+				"name": "fever",
+				"description_self": "You have a fever",
+				"description_others": " has a fever",
+				"time_penalty": 1,
+				"subtracts": {
+					"bandages": 10
+				},
+				"death_chance": 0.005,
+				"death_message_self": "You died from fever",
+				"death_message_others": " died from fever"
+			}
+		}
     ],
     "occupations": [{
-
+		{
+			"doctor" : {
+				"name" : "Doctor",
+				"difficulty" : "Easy",
+				"money" : 1600
+			}
+		},
+		{
+			"carpenter" : {
+				"name" : "Carpenter",
+				"difficulty" : "Medium",
+				"money" : 800
+			}
+		},
+		{
+			"farmer" : {
+				"name" : "Farmer",
+				"difficulty" : "Hard",
+				"money" : 400
+			}
+		}
     }]
 }
