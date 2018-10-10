@@ -13,7 +13,7 @@ TermEm.addPlugin('general_store', store.states)
 TermEm.addPlugin('home', home.states)
 
 function termHandle(player, req, res) {
-  new TermEm(req, res).pickUp(player, req.body.input)
+  new TermEm(player, req, res).pickUp(player, req.body.input)
 }
 
 plugins.addPlugin(new plugin.Plugin(
