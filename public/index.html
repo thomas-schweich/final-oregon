@@ -86,16 +86,7 @@
     }
   }
 
-  var methods = {
-    hunt: function (term) {
-      hunt = game.actions.hunt
-      prompt = Math.floor(Math.random() * hunt.prompts.length)
-      // TODO
-    },
-    move: async function () {
-      data.player = await axios.get('/' + game.sn + '/next')
-    }
-  }
+  var methods = {}
 
   var vm = new Vue({
     el: '#term-page',
@@ -103,24 +94,17 @@
     methods: methods
   })
 
-  async function playTurn(term) {
-    var player = data.player
-    term.writeLine('You are in ' + player.location + ' at mile marker ' + player.miles)
-    term.writeLine('Would you like to:')
-    var locName = player.location
-    var game = data.game
-    var loc_features = game.locations[location].features
-    var game_features = game.features
-    loc_features.foreach(function (e, i) {
-      term.writeLine('(' + (i + 1) + ') ' + e.description)
-    })
-    var response = 0
+  async function playGame(term) {
+    var input = ''
+    var response = null
     do {
-      if(response) term.writeLine('Invalid choice. Please enter one of the displayed numbers and press enter.')
-      response = Number.parseInt(await term.readLine())
-    } while(response < 0 || response > features.length)
-    // Look up the function in game.features based on the location indicated by the response:
-    await methods[game_features[loc_features[response - 1]].fun](term)
+      response = await axios.post(player.nextURL, {
+        input: input
+      }).data
+      data.player = response.player
+      term.writeLines(response.lines)
+      input = response.read ? await term.readLine() : ''
+    } while(response.cont)
   }
 
   async function loadGame(sn) {
@@ -158,23 +142,22 @@
         try {
           success = await loadGame(sn)
         } catch (e) {
+          
           term.writeLine('Invalid save number: "' + sn + '"')
           term.writeLine('Please enter your Save Number below:')
           sn = await term.readLine()
-          console.error(e)
         }
       }
     } else {
       term.writeLine('Invalid response. Options are "1" or "2"')
       await startGame(term)
     }
-    while (true) {
-        await playTurn(term)
-    }
+    await playGame()
+    // TODO Code for victory here
   }
 
   startGame(main).then(function () {
-
+    console.log('Game ended.')
   }).catch(function (e) {
     alert('Something went wrong. Please write down your save number if you have one, then reload the page.')
     console.error(e)

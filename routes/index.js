@@ -2,33 +2,26 @@ var express = require('express');
 var router = express.Router();
 var schema = require('../schema')
 var plugin = require('../plugin')
+var TermEm = require('../termEm').TermEm
 const game = require('../public/game.json')
+const store = require('./store')
+const home = require('./home')
 
 var plugins = new plugin.PluginGroup()
 
+TermEm.addPlugin('general_store', store.states)
+TermEm.addPlugin('home', home.states)
+
+function termHandle(player, req, res) {
+  new TermEm(req, res).pickUp(player, req.body.input)
+}
+
 plugins.addPlugin(new plugin.Plugin(
-  'store',
+  'general_store',
   function(player) {
     return player.location.features.includes('general_store')
-  },
-  function(player, req, res) {
-    var action = req.body.action
-    var item = req.body.item
-    var qty = req.body.quantitiy
-    var total = game.items[item].price * qty
-    if(action === 'buy' && player.money >= total) {
-      player.money -= game.items[item].price * qty
-      player.items[item].quantity += qty
-    } else if (action == 'sell') {
-      player.items[item].quantity -= qty
-      player.money += game.items[item].value
-    } else {
-      res.sendStatus(400)
-      return
-    }
-    player.save()
-    res.json(player)
-  }
+  }, 
+  termHandle
 ))
 
 plugins.addPlugin(new plugin.Plugin(
@@ -36,9 +29,15 @@ plugins.addPlugin(new plugin.Plugin(
   function(player) {
     return player.inprogress.length == 0
   },
-  function(player, req, res) {
+  termHandle
+))
 
-  }
+plugins.addPlugin(new plugin.Plugin(
+  'home',
+  function(player) {
+    return player.inprogress.length == 0
+  },
+  termHandle
 ))
 
 /**

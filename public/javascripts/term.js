@@ -1,3 +1,6 @@
+// term.js -- Thomas Schweich
+// Object representing a text terminal including methods for synchronously writing a line and asynchronously reading a line
+
 function Term() {
     this.lines = []
     for (let i = 0; i < LINES; i++) {

@@ -10,11 +10,18 @@ var inventory = {
 
 var player = {
     sn: String,
+    nextURL: String,
+    alive: Boolean,
+    done: Boolean,
     name: String,
     turn: Number,
     miles: Number,
     money: Number,
-    location: String,
+    location: {
+        name: String,
+        features: [String],
+        distance: Number
+    },
     status: String,
     inprogress: [],
     history: [{
@@ -60,7 +67,7 @@ exports.newPlayer = async function newPlayer(properties={}) {
         sn = (Math.random() + 1).toString(36).substr(2, 6)
         count = await Player.count({sn: sn}).exec()
     } while(count)
-    var nplayer = new Player({sn: sn})
+    var nplayer = new Player({sn: sn, nextURL: '/' + sn + '/home'})
     for (let p in properties) {
         nplayer[p] = properties[p]
     }
