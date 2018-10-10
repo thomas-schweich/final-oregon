@@ -6,11 +6,13 @@ var TermEm = require('../termEm').TermEm
 const game = require('../public/game.json')
 const store = require('./store')
 const home = require('./home')
+const next = require('./next')
 
 var plugins = new plugin.PluginGroup()
 
 TermEm.addPlugin('general_store', store.states)
 TermEm.addPlugin('home', home.states)
+TermEm.addPlugin('next', next.states)
 
 function termHandle(player, req, res) {
   new TermEm(player, req, res).pickUp(player, req.body.input)
