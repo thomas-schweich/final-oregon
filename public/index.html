@@ -43,8 +43,22 @@
         </ul>
       </div>
     </nav>
-    <div class="info blue-grey darken-2">
-      <p>{{ player }}</p>
+    <div class="info blue-grey darken-2 white-text">
+      <h5 class="center">Inventory</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>Item</td>
+            <td>Qty</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in player.inventory">
+            <td>{{ item }}</td>
+            <td>{{ player.inventory[item] }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="page-contain white-text">
       <div class="roundscreen">
@@ -76,7 +90,7 @@
     var instances = M.Modal.init(elems, options);
   });
 
-  const LINES = 30
+  const LINES = 50
   var main = new Term()
   var data = {
     main: main,
