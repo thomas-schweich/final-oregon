@@ -1,9 +1,15 @@
 const game = require('../public/game.json')
 
+
+
 /**
- * Generates balanced luck
+ * Generates up to one event and one disease to happen to the player
  */
-function luck() {}
+function luck() {
+    for (let e of game.events) {
+        var luck = Math.random() * 2
+    }
+}
 
 var states = {
     '': function (player, term, input) {
