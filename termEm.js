@@ -4,7 +4,7 @@
 function TermEm(player, req, res) {
     this.lines = []
     this.res = res
-    this._plugin = req.body.nextURL.split('/')[2]
+    this._plugin = req.url.split('/')[2]
     this._inprogress = player.inprogress
 }
 
