@@ -109,6 +109,10 @@
         "trade": {
             "fun": "trade",
             "description": "Trade with other players"
+        },
+		"tavern": {
+            "fun": "tavern",
+            "description": "Go to a tavern"
         }
     },
     "items": {
