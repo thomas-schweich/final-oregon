@@ -6,7 +6,7 @@
         },
         {
             "name": "Kansas River Crossing",
-            "features": ["hunt",],
+            "features": ["hunt"],
             "distance": 102
         },
         {
@@ -237,7 +237,7 @@
 		}
     ],
     "occupations": [{
-		{
+		
 			"doctor" : {
 				"name" : "Doctor",
 				"difficulty" : "Easy",
@@ -258,5 +258,5 @@
 				"money" : 400
 			}
 		}
-    }]
+    ]
 }
