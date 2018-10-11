@@ -15,6 +15,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-app.listen(process.env.PORT)
+if (process.env.DEV) {
+    app.listen(process.env.PORT);
+}
 
 module.exports = app;
