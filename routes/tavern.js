@@ -18,7 +18,7 @@ var states = {
 			term.terminate()
 		}
 		else{
-			if chatroom[player.locations.name]{
+			if (chatroom[player.locations.name]){
 				if (chatroom[player.locations.name].length <= 50){
 					chatroom[player.locations.name] += input
 				}

@@ -117,36 +117,8 @@
           </tr>
         </tbody>
       </table>
-      <h5 class="center">Trades</h5>
-      <table class="white-text" v-if="player.offers">
-        <thead>
-          <tr>
-            <td>Trader Name</td>
-            <td>Trader Item</td>
-            <td>Traded Amount</td>
-          </tr>
-          <tr>
-            <td>{{ player.offers.name }}</td>
-            <td>{{ player.offers.request.item }}</td>
-            <td>{{ player.offers.request.amount }}</td>
-          </tr>
-          <tr>
-            <td>Your Name</td>
-            <td>Your Item</td>
-            <td>Item Amount</td>
-          </tr>
-          <tr>
-            <td>{{ player.offers.sn }}</td>
-            <td>{{ player.offers.reward.item }}</td>
-            <td>{{ player.offers.reward.amount }}</td>
-          </tr>
-          <p v-for="member in player.party"><a href="" class="white-text" id="accept">Accept</a> <a href="" class="white-text" id="decline">Decline</a></p>
-          
-        </thead>
-
-      </table>
+      <h5 class="center">Chatroom</h5>
     </div>
-
     <div class="page-contain white-text">
       <div class="roundscreen">
         <!-- <div class="window-header blue darken-2">
