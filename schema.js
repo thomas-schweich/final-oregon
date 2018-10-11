@@ -28,7 +28,7 @@ var player = {
         diseases: [],
         alive: Boolean
     }],
-    offers: [{
+    offers: {
         name: String,
         request: {
             item: String,
@@ -39,7 +39,7 @@ var player = {
             amount: Number
         },
         sn: String
-    }],
+    },
     nearby: [{
         name: String,   
         sn: String,
