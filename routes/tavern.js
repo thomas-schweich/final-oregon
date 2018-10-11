@@ -1,9 +1,13 @@
-// const game = require('../public/game.json')
-// const playerSchema = require('../schema.js')
-// var chatrooms = {name : []}
+const game = require('../public/game.json')
+const playerSchema = require('../schema.js')
+var chatrooms = {name : []}
 
-// var states = {
-//     '': function(player, term, input) {
+var states = {
+    '': function(player, term, input) {
+		term.writeLine("In tavern")
+		term.terminate
+	}
+}
 // 		playerSchema.addNearby(player)
 //         term.writeLines([
 // 			'You enter a tavern',
@@ -221,4 +225,4 @@
 // 	}*/
 // }
 
-// exports.states = states
+exports.states = states
