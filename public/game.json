@@ -1,7 +1,7 @@
 {
     "locations": [{
             "name": "Independence, MO",
-            "features": ["next", "general_store", "trade" ],
+            "features": ["next", "general_store" ],
             "distance": 0
         },
         {
@@ -16,7 +16,7 @@
         },
         {
             "name": "Ft Kearney",
-            "features": ["next", "general_store", "trade" ],
+            "features": ["next", "general_store" ],
             "distance": 304
         },
         {
@@ -26,7 +26,7 @@
         },
         {
             "name": "Ft Laramie",
-            "features": ["next", "general_store", "trade"],
+            "features": ["next", "general_store"],
             "distance": 640
         },
         {
@@ -41,7 +41,7 @@
         },
         {
             "name": "Ft Bridger",
-            "features": ["next", "general_store", "trade"],
+            "features": ["next", "general_store"],
             "distance": 1075
         },
         {
@@ -51,7 +51,7 @@
         },
         {
             "name": "Ft Hall",
-            "features": ["next", "general_store", "trade"],
+            "features": ["next", "general_store"],
             "distance": 1294
         },
         {
@@ -61,7 +61,7 @@
         },
         {
             "name": "Ft Boise",
-            "features": ["next", "general_store", "trade"],
+            "features": ["next", "general_store"],
             "distance": 1590
         },
         {
@@ -71,7 +71,7 @@
         },
         {
             "name": "Ft Walla Walla",
-            "features": ["next", "general_store", "trade"],
+            "features": ["next", "general_store"],
             "distance": 1805
         },
         {
@@ -108,7 +108,7 @@
         },
         "trade": {
             "fun": "trade",
-            "description": "Trade with other players"
+            "description": "Talk with other players"
         }
     },
     "items": {
