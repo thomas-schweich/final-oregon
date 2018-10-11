@@ -1,6 +1,6 @@
  const game = require('../public/game.json')
- const playerSchema = require('../schema.js')
- var chatrooms = {name : []}
+ //const playerSchema = require('../schema.js')
+ //var chatrooms = {name : []}
 
  var states = {
      '': function(player, term, input) {

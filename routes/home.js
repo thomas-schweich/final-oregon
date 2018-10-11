@@ -6,7 +6,8 @@ var states = {
         term.writeLine('Would you like to:')
         player.location.features.forEach(function (e, i) {
             feature = game.features[e]
-            term.writeLine('(' + (i + 1) + ') ' + feature.description)
+			term.writeLine("In home")
+            //term.writeLine('(' + (i + 1) + ') ' + feature.description)
         })
         term.read(player, 'chosen')
     },
