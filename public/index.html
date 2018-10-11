@@ -45,7 +45,7 @@
     </nav> 
     <div class="info blue-grey darken-2 white-text">
       <h5 class="center">Your Status</h5>
-      <table>
+      <table class="white-text">
         <thead>
           <tr>
             <td>Miles</td>
@@ -64,7 +64,7 @@
         </tbody>
       </table>
       <h5 class="center">Inventory</h5>
-      <table>
+      <table class="white-text">
         <thead>
           <tr>
             <td>Item</td>
@@ -75,23 +75,35 @@
           <tr>
             <td>Oxen</td>
             <td>{{ player.inventory.oxen }}</td>
+          </tr>
+          <tr>
             <td>Food</td>
             <td>{{ player.inventory.food }}</td>
+          </tr>
+          <tr>
             <td>Clothing</td>
             <td>{{ player.inventory.clothing }}</td>
+          </tr>
+          <tr>
             <td>Ammunition</td>
             <td>{{ player.inventory.ammunition }}</td>
+          </tr>
+          <tr>
             <td>Wagon Wheels</td>
             <td>{{ player.inventory.wagon_wheel }}</td>
+          </tr>
+          <tr>
             <td>Wagon Axles</td>
             <td>{{ player.inventory.wagon_axle }}</td>
+          </tr>
+          <tr>
             <td>Wagon Tounges</td>
             <td>{{ player.inventory.wagon_tounge }}</td>
           </tr>
         </tbody>
       </table>
       <h5 class="center">Party Status</h5>
-      <table>
+      <table class="white-text">
         <thead>
           <tr>
             <td>Party Member</td>
@@ -108,6 +120,7 @@
         </tbody>
       </table>
     </div>
+
     <div class="page-contain white-text">
       <div class="roundscreen">
         <!-- <div class="window-header blue darken-2">
