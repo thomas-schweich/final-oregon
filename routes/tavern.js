@@ -1,4 +1,4 @@
-const game = require('../public/game.json')
+/*const game = require('../public/game.json')
 const playerSchema = require('../schema.js')
 var chatrooms = {name : []}
 
@@ -225,4 +225,4 @@ var states = {
 // 	}*/
 // }
 
-exports.states = states
+//exports.states = states
