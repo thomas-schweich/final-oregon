@@ -10,6 +10,7 @@ const next = require('./next')
 const hunt = require("./hunt")
 const start = require('./start')
 const dead = require("./dead")
+const tavern = require("./tavern")
 
 var plugins = new plugin.PluginGroup()
 
@@ -19,6 +20,7 @@ TermEm.addPlugin('next', next.states)
 TermEm.addPlugin('hunt',hunt.states)
 TermEm.addPlugin('start', start.states)
 TermEm.addPlugin('dead', dead.states)
+TermEm.addPlugin('tavern', tavern.states)
 
 function termHandle(player, req, res) {
   new TermEm(player, req, res).pickUp(player, req.body.input)
@@ -28,6 +30,14 @@ plugins.addPlugin(new plugin.Plugin(
   'start',
   function(player) {
     return player.turn == 1
+  }, 
+  termHandle
+))
+
+plugins.addPlugin(new plugin.Plugin(
+  'tavern',
+  function(player) {
+    return player.location.features.includes('tavern')
   }, 
   termHandle
 ))
