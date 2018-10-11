@@ -292,7 +292,7 @@ var states = {
             term.read(player, 'oxenSell')
             return
         }
-        if(player.items.oxen < numberSold) {
+        if(player.inventory.oxen < numberSold) {
             term.writeLine("You don't have enough oxen to sell.")
             term.read(player, 'oxenSell')
             return
@@ -311,7 +311,7 @@ var states = {
             term.read(player, 'foodSell')
             return
         }
-        if(player.items.food < numberSold) {
+        if(player.inventory.food < numberSold) {
             term.writeLine("You don't have enough food to sell.")
             term.read(player, 'foodSell')
             return
@@ -330,7 +330,7 @@ var states = {
             term.read(player, 'ammunitionSell')
             return
         }
-        if(player.items.ammunition < numberSold) {
+        if(player.inventory.ammunition < numberSold) {
             term.writeLine("You don't have enough ammunition to sell.")
             term.read(player, 'ammunitionSell')
             return
@@ -349,7 +349,7 @@ var states = {
             term.read(player, 'clothesSell')
             return
         }
-        if(player.items.clothes < numberSold) {
+        if(player.inventory.clothes < numberSold) {
             term.writeLine("You don't have enough clothes to sell.")
             term.read(player, 'clothesSell')
             return
@@ -368,7 +368,7 @@ var states = {
             term.read(player, 'wheelSell')
             return
         }
-        if(player.items.wagon_wheel < numberSold) {
+        if(player.inventory.wagon_wheel < numberSold) {
             term.writeLine("You don't have enough wheels to sell.")
             term.read(player, 'wheelSell')
             return
@@ -387,7 +387,7 @@ var states = {
             term.read(player, 'axleSell')
             return
         }
-        if(player.items.wagon_axle < numberSold) {
+        if(player.inventory.wagon_axle < numberSold) {
             term.writeLine("You don't have enough axles to sell.")
             term.read(player, 'axleSell')
             return
@@ -406,7 +406,7 @@ var states = {
             term.read(player, 'tongueSell')
             return
         }
-        if(player.items.wagon_tongue < numberSold) {
+        if(player.inventory.wagon_tongue < numberSold) {
             term.writeLine("You don't have enough tongues to sell.")
             term.read(player, 'tongueSell')
             return

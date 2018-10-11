@@ -5,9 +5,12 @@ mongoose.connect(process.env.MONGODB_URI || require('./dev_db.json'))
 
 var inventory = {
     oxen: Number,
-    ammunition: Number,
     food: Number,
-    axles: Number
+    clothing: Number,
+    ammunition: Number,
+    wagon_wheel: Number,
+    wagon_axle: Number,
+    wagon_tongue: Number
 }
 
 var player = {
