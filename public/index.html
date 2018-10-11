@@ -72,9 +72,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="invItem in player.inventory">
-            <td>{{ invItem }}</td>
-            <td>{{ player.inventory[invItem] }}</td>
+          <tr>
+            <td>Oxen</td>
+            <td>{{ player.inventory.oxen }}</td>
+            <td>Food</td>
+            <td>{{ player.inventory.food }}</td>
+            <td>Clothing</td>
+            <td>{{ player.inventory.clothing }}</td>
+            <td>Ammunition</td>
+            <td>{{ player.inventory.ammunition }}</td>
+            <td>Wagon Wheels</td>
+            <td>{{ player.inventory.wagon_wheel }}</td>
+            <td>Wagon Axles</td>
+            <td>{{ player.inventory.wagon_axle }}</td>
+            <td>Wagon Tounges</td>
+            <td>{{ player.inventory.wagon_tounge }}</td>
           </tr>
         </tbody>
       </table>
