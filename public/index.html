@@ -45,7 +45,7 @@
     </nav>
     <div class="info blue-grey darken-2 white-text">
       <h5 class="center">Your Status</h5>
-      <table>
+      <!-- <table>
         <thead>
           <tr>
             <td>Miles</td>
@@ -56,10 +56,10 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ player.miles }}</td>
-            <td>{{ player.money }}</td>
-            <td>{{ player.status}}</td>
-            <td>{{ player.location.name }}</td>
+            <td>{{ player.miles || 0 }}</td>
+            <td>{{ player.money || 0 }}</td>
+            <td>{{ player.status || 0 }}</td>
+            <td>{{ player.location.name || 0 }}</td>
           </tr>
         </tbody>
       </table>
@@ -94,11 +94,11 @@
         <tbody>
           <tr v-for="member in player.party">
             <td>{{ member }}</td>
-            <td>{{ player.party[alive] }}</td>
+            <td>{{ player[party][alive] }}</td>
             <td>{{ player.party[diseases] }}</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
     <div class="page-contain white-text">
       <div class="roundscreen">

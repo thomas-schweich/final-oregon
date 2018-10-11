@@ -8,6 +8,7 @@ const game = require('../public/game.json')
 function luck() {
     for (let e of game.events) {
         var luck = Math.random() * 2
+        
     }
 }
 

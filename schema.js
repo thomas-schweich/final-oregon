@@ -76,7 +76,12 @@ exports.newPlayer = async function newPlayer(properties={}) {
         location: game.locations[0],
         inventory: {
             oxen: 0,
-            bandages: 0 // TODO
+            food: 0,
+            clothing: 0,
+            ammunition: 0,
+            wagon_wheel: 0,
+            wagon_axle: 0,
+            wagon_tongue: 0
         },
         miles: 0,
         alive: true,

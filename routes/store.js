@@ -3,7 +3,7 @@ const game = require('../public/game.json')
 var states = {
     '': function(player, term, input) {
         term.writeLines([
-            'Welcome to the' + locations.name + 'General Store!',
+            'Welcome to the ' + player.location.name + ' General Store!',
             'Would you like to:',
             '(1) Buy items',
             '(2) Sell items'
@@ -40,22 +40,22 @@ var states = {
 	},
 	'buy' : function(player, term, input) {
 		if (input=="1"){
-			term.writeLine("Oxen cost" + items.oxen.price + "per ox.")
+			term.writeLine("Oxen cost " + game.items.oxen.price + " per ox.")
 			term.writeLine("How many oxen would you like to buy?")
 			term.read(player,"oxenBuy")
 		}
 		else if (input=="2"){
-			term.writeLine("Food costs" + items.food.price + "per pound.")
+			term.writeLine("Food costs " + game.items.food.price + " per pound.")
 			term.writeLine("How much food would you like to buy?")
 			term.read(player,"foodBuy")
 		}
 		else if (input=="3"){
-			term.writeLine("Ammunition costs" + items.ammunition.price + "per bullet.")
+			term.writeLine("Ammunition costs " + game.items.ammunition.price + " per bullet.")
 			term.writeLine("How much ammunition would you like to buy?")
 			term.read(player,"ammunitionBuy")
 		}
 		else if (input=="4"){
-			term.writeLine("Clothes cost" + items.clothes.price + "per set.")
+			term.writeLine("Clothes cost " + game.items.clothes.price + " per set.")
 			term.writeLine("How many clothes would you like to buy?")
 			term.read(player,"clothesBuy")
 		}
@@ -75,17 +75,17 @@ var states = {
 	},
 	'partSelectBuy': function(player, term, input) {
 		if(input === "1") {
-			term.writeLine("Wagon wheels cost" + items.wagon_wheel.price + "per wheel.")
+			term.writeLine("Wagon wheels cost " + game.items.wagon_wheel.price + " per wheel.")
 			term.writeLine("How many wheels would you like to buy?")
 			term.read(player,"wheelBuy")
 		}
 		else if (input === "2") {
-			term.writeLine("Wagon axles cost" + items.wagon_axle.price + "per axle.")
+			term.writeLine("Wagon axles cost " + game.items.wagon_axle.price + " per axle.")
 			term.writeLine("How many axles would you like to buy?")
 			term.read(player,"axleBuy")
 		}
 		else if (input === "3") {
-			term.writeLine("Wagon tongues cost" + items.wagon_tongue.price + "per tongue.")
+			term.writeLine("Wagon tongues cost " + game.items.wagon_tongue.price + " per tongue.")
 			term.writeLine("How many tongues would you like to buy?")
 			term.read(player,"tongueBuy")
 		}
@@ -229,22 +229,22 @@ var states = {
     },
 	'sell' : function(player, term, input) {
 		if (input=="1"){
-			term.writeLine("I'll buy oxen for" + items.oxen.value + "per ox.")
+			term.writeLine("I'll buy oxen for " + game.items.oxen.value + " per ox.")
 			term.writeLine("How many oxen would you like to sell?")
 			term.read(player,"oxenSell")
 		}
 		else if (input=="2"){
-			term.writeLine("I'll buy food for" + items.food.value + "per pound.")
+			term.writeLine("I'll buy food for " + game.items.food.value + " per pound.")
 			term.writeLine("How much food would you like to sell?")
 			term.read(player,"foodSell")
 		}
 		else if (input=="3"){
-			term.writeLine("I'll buy ammunition for" + items.ammunition.value + "per bullet.")
+			term.writeLine("I'll buy ammunition for " + game.items.ammunition.value + " per bullet.")
 			term.writeLine("How much ammunition would you like to sell?")
 			term.read(player,"ammunitionSell")
 		}
 		else if (input=="4"){
-			term.writeLine("I'll buy clothes for" + items.clothes.value + "per set.")
+			term.writeLine("I'll buy clothes for " + game.items.clothes.value + " per set.")
 			term.writeLine("How many clothes would you like to sell?")
 			term.read(player,"clothesSell")
 		}
@@ -264,17 +264,17 @@ var states = {
 	},
 	'partSelectSell': function(player, term, input) {
 		if(input === "1") {
-			term.writeLine("I'll buy wagon wheels for" + items.wagon_wheel.value+ "per wheel.")
+			term.writeLine("I'll buy wagon wheels for " + game.items.wagon_wheel.value+ " per wheel.")
 			term.writeLine("How many wheels would you like to sell?")
 			term.read(player,"wheelSell")
 		}
 		else if (input === "2") {
-			term.writeLine("I'll buy wagon axles for" + items.wagon_axle.value + "per axle.")
+			term.writeLine("I'll buy wagon axles for " + game.items.wagon_axle.value + " per axle.")
 			term.writeLine("How many axles would you like to sell?")
 			term.read(player,"axleSell")
 		}
 		else if (input === "3") {
-			term.writeLine("I'll buy wagon tongues for" + items.wagon_tongue.value + "per tongue.")
+			term.writeLine("I'll buy wagon tongues for " + game.items.wagon_tongue.value + " per tongue.")
 			term.writeLine("How many tongues would you like to sell?")
 			term.read(player,"tongueSell")
 		}
