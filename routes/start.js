@@ -40,6 +40,7 @@ var states = {
         player.name = input
         term.writeLine('Hello, ' + player.name)
         term.writeLine('You have $' + player.money)
+        term.writeLine('Oxen are $100 per Ox')
         term.writeLine('How many oxen do you want to buy?')
         term.read(player, 'oxen')
     },
@@ -62,9 +63,133 @@ var states = {
         }
         term.writeLine('How much food would you like to buy?')
         term.writeLine('It costs ' + game.items.food.price + ' per lb.')
+        term.read(player, 'food')
+    },
+    'food': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'food')
+            return
+        }
+        var cost = game.items['food'].price * num
+        if(player.money > cost) {
+            player.inventory.food += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'food')
+            return
+        }
+        term.writeLine('How much clothing would you like to buy?')
+        term.writeLine('It costs ' + game.items.clothing.price + ' per set.')
+        term.read(player, 'clothing')
+    },
+
+    'Clothing': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'clothing')
+            return
+        }
+        var cost = game.items['clothing'].price * num
+        if(player.money > cost) {
+            player.inventory.clothing += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'clothing')
+            return
+        }
+        term.writeLine('How much ammo would you like to buy?')
+        term.writeLine('It costs ' + game.items.ammo.price + ' per bullet.')
+        term.read(player, 'ammo')
+    },
+    'ammo': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'ammo')
+            return
+        }
+        var cost = game.items['ammo'].price * num
+        if(player.money > cost) {
+            player.inventory.ammunition += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'ammo')
+            return
+        }
+        term.writeLine('How many wagon wheels would you like to buy?')
+        term.writeLine('It costs ' + game.items.wagon_wheel.price + ' per wheel.')
+        term.read(player, 'wheel')
+    },
+    'wheel': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'wheel')
+            return
+        }
+        var cost = game.items['wagon_wheel'].price * num
+        if(player.money > cost) {
+            player.inventory.wagon_wheel += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'wheel')
+            return
+        }
+        term.writeLine('How many Wagon Axles would you like to buy?')
+        term.writeLine('It costs ' + game.items.wagon_axle.price + ' per Axle.')
+        term.read(player, 'axle')
+    },
+    'axle': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'axle')
+            return
+        }
+        var cost = game.items['wagon_axle'].price * num
+        if(player.money > cost) {
+            player.inventory.wagon_axle += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'wagon_axle')
+            return
+        }
+        term.writeLine('How many Wagon Tongues would you like to buy?')
+        term.writeLine('It costs ' + game.items.wagon_tongue.price + ' per tongue.')
+        term.read(player, 'tongue')
+    },
+    'tongue': function(player, term, input) {
+        try {
+            var num = Number.parseInt(input)
+        } catch {
+            term.writeLine('Please enter an integer')
+            term.read(player, 'tongue')
+            return
+        }
+        var cost = game.items['wagon_tongue'].price * num
+        if(player.money > cost) {
+            player.inventory.wagon_tongue += num
+            player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'tongue')
+            return
+        }
         term.terminate(player)
-        //term.read(player, 'food')
-    }
+    },
 }
 
 exports.states = states
