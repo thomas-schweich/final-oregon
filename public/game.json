@@ -1,7 +1,7 @@
 {
     "locations": [{
             "name": "Independence, MO",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade" ],
             "distance": 0
         },
         {
@@ -16,7 +16,7 @@
         },
         {
             "name": "Ft Kearney",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade" ],
             "distance": 304
         },
         {
@@ -26,7 +26,7 @@
         },
         {
             "name": "Ft Laramie",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade"],
             "distance": 640
         },
         {
@@ -41,17 +41,17 @@
         },
         {
             "name": "Ft Bridger",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade"],
             "distance": 1075
         },
         {
             "name": "Soda Springs",
-            "features": ["next", "hunt", "tavern"],
+            "features": ["next", "hunt"],
             "distance": 1237
         },
         {
             "name": "Ft Hall",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade"],
             "distance": 1294
         },
         {
@@ -61,7 +61,7 @@
         },
         {
             "name": "Ft Boise",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade"],
             "distance": 1590
         },
         {
@@ -71,7 +71,7 @@
         },
         {
             "name": "Ft Walla Walla",
-            "features": ["next", "general_store", "trade", "tavern"],
+            "features": ["next", "general_store", "trade"],
             "distance": 1805
         },
         {
