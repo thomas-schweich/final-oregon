@@ -169,14 +169,14 @@ var states = {
         }
         term.writeLine('How many Wagon Tongues would you like to buy?')
         term.writeLine('It costs ' + game.items.wagon_tongue.price + ' per tongue.')
-        term.read(player, 'tongue')
+        term.read(player, 'wagon_tongue')
     },
-    'tongue': function(player, term, input) {
+    'wagon_tongue': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
         } catch (e){
             term.writeLine('Please enter an integer')
-            term.read(player, 'tongue')
+            term.read(player, 'wagon_tongue')
             return
         }
         var cost = game.items['wagon_tongue'].price * num
@@ -185,7 +185,7 @@ var states = {
             player.money -= cost
         } else {
             term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
-            term.read(player, 'tongue')
+            term.read(player, 'wagon_tongue')
             return
         }
         term.terminate(player)
