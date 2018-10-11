@@ -68,7 +68,7 @@ var states = {
     'food': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e) {
             term.writeLine('Please enter an integer')
             term.read(player, 'food')
             return
@@ -90,7 +90,7 @@ var states = {
     'clothing': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e) {
             term.writeLine('Please enter an integer')
             term.read(player, 'clothing')
             return
@@ -111,7 +111,7 @@ var states = {
     'ammo': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e) {
             term.writeLine('Please enter an integer')
             term.read(player, 'ammo')
             return
@@ -132,7 +132,7 @@ var states = {
     'wheel': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e) {
             term.writeLine('Please enter an integer')
             term.read(player, 'wheel')
             return
@@ -153,7 +153,7 @@ var states = {
     'axle': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e){
             term.writeLine('Please enter an integer')
             term.read(player, 'axle')
             return
@@ -174,7 +174,7 @@ var states = {
     'tongue': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e){
             term.writeLine('Please enter an integer')
             term.read(player, 'tongue')
             return
