@@ -118,7 +118,7 @@
         </tbody>
       </table>
       <h5 class="center">Trades</h5>
-      <table class="white-text">
+      <table class="white-text" v-if="player.offers">
         <thead>
           <tr>
             <td>Trader Name</td>
@@ -136,7 +136,7 @@
             <td>Item Amount</td>
           </tr>
           <tr>
-            <td>{{ player.sn }}</td>
+            <td>{{ player.offers.sn }}</td>
             <td>{{ player.offers.reward.item }}</td>
             <td>{{ player.offers.reward.amount }}</td>
           </tr>
