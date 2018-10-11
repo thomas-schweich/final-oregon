@@ -1,21 +1,40 @@
 const game = require('../public/game.json')
 const playerSchema = require('../schema.js')
+var chatrooms = {name : []}
 
 var states = {
     '': function(player, term, input) {
 		playerSchema.addNearby(player)
-		player.trade.partnerSn = ""
-		player.trade.sellItem = ""
-		player.trade.sellAmount = 0
-		player.trade.buyItem = ""
-		player.trade.buyAmount = 0
         term.writeLines([
-			'Which player would you like to trade with',
-			'Enter a players sn or enter "Leave" to exit'
+			'You enter a tavern',
+			"You decide to yell whatevers on your mind at the room",
+			'Enter your message or enter "Leave" to exit'
 		])
-		term.read(player, 'select')
+		term.read(player, 'enterMessage')
 	},
-	'select' : function(player, term, input) {
+	'enterMessage': function(player, term, input) {
+		if (input == "Leave") {
+			term.writeLine("Goodbye")
+			term.terminate()
+		}
+		else{
+			if chatroom[player.locations.name]{
+				if (chatroom[player.locations.name].length <= 50){
+					chatroom[player.locations.name] += input
+				}
+				else{
+					for (index in chatroom[player.locations.name].length){
+						chatroom[player.locations.name].shift()
+					}
+					chatroom[player.locations.name] += input
+				}
+			}
+			else{
+				chatroom[player.locations.name] = input
+			}
+		}
+	}
+	/*'select' : function(player, term, input) {
 		if (input == "Leave") {
 			term.terminate(player)
 		}
@@ -190,10 +209,16 @@ var states = {
 		else{
 			player.trade.buyAmount = input
 			term.writeLine("Your offer has be sent")
-			//send offer
+			var tradePartner = await getPlayer(partner)
+			if (tradePartner.offers.name == ""){
+				playerSchema.updateDatabase(partner, "offers.name", player.name)
+			}
+			else{
+				term.writeLine("Player is currently busy")
+			}
 			term.terminate(player)
 		}	
-	}
+	}*/
 }
 
 exports.states = states
