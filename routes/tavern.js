@@ -5,7 +5,7 @@
  var states = {
      '': function(player, term, input) {
 		 term.writeLine("In tavern")
-		 termn.terminate(player)
+		 term.terminate(player)
 	 }
  }
 // 		playerSchema.addNearby(player)
