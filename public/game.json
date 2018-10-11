@@ -83,6 +83,12 @@
             "name": "Barlow Toll Road",
             "features": ["next", "hunt"],
             "distance": 2025
+        },
+        {
+            "name": "The Wilderness",
+            "features": ["next", "hunt"],
+            "distance": 100000000000,
+            "nonstandard": "true"
         }
 
     ],
