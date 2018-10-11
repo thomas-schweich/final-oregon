@@ -23,18 +23,20 @@ function distanceTraveled(player) {
  */
 function locDist(player) {
     var recentIdx = 0
-    game.locations.forEach(function(e, i) {
-        if (!e.nonstandard && e.distance <= player.miles && i > recentIdx) {
+    var i = 0
+    for(let e in game.locations) {
+        if(game.locations[e].distance <= player.miles) {
             recentIdx = i
         }
-    })
-    var dist = distanceTraveled(player) + game.locations[recentIdx].distance
+        i++
+    }
+    var dist = distanceTraveled(player)
     var nextLoc = game.locations[recentIdx + 1]
-    if (nextLoc.distance < dist) {
+    if (nextLoc.distance < player.miles + dist) {
         player.miles = nextLoc.distance
         player.location = nextLoc
     } else {
-        player.miles = dist
+        player.miles += Math.floor(dist)
         player.location = game.locations[game.locations.length - 1]
     }
 }
@@ -47,10 +49,17 @@ function eventDisease() {
     var disease = null
     for (let e in game.events) {
         ev = game.events[e]
-        event = Math.random() * 2 * ev.mean > Math.random() ? ev : null
+        if(Math.random() * 2 * ev.median > Math.random()) {
+            event = ev
+            break
+        }
     }
     for(let d in game.diseases) {
-        disease = Math.random() * 2 * ev.mean > Math.random ? ev : null
+        de = game.diseases[d]
+        if(Math.random() * 2 * de.median > Math.random()) {
+            disease = de
+            break
+        }
     }
     if(event && disease) {
         if(Math.random() > .5) {
@@ -59,7 +68,10 @@ function eventDisease() {
             disease = null
         }
     }
-    return event || disease    
+    return {
+        event : event,
+        disease: disease
+    }
 }
 
 /**
@@ -76,8 +88,20 @@ var states = {
         locDist(player)
         feed(player)
         var ed = eventDisease(player)
-        if(ed) {
-            term.writeLine(ed.description_self)
+        if(ed.disease) {
+            if(player.diseases) {
+                player.diseases.push(ed)
+            } else {
+                player.diseases = [ed.disease.name]
+            }
+            term.writeLine(ed.disease.description_self)
+        } else if (ed.event) {
+            if(player.events) {
+                player.events.push(ed)
+            } else {
+                player.events = [ed.event.name]
+            }
+            term.writeLine(ed.event.description)
         }
         var deadOf = null
         for(let d of player.diseases) {

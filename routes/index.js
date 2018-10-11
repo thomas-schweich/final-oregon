@@ -27,7 +27,7 @@ function termHandle(player, req, res) {
 plugins.addPlugin(new plugin.Plugin(
   'start',
   function(player) {
-    return player.turn == 0
+    return player.turn == 1
   }, 
   termHandle
 ))

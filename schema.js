@@ -76,7 +76,7 @@ exports.newPlayer = async function newPlayer(properties={}) {
     } while(count)
     var nplayer = new Player({
         sn: sn, 
-        nextURL: '/' + sn + '/home',
+        nextURL: '/' + sn + '/start',
         location: game.locations[0],
         inventory: {
             oxen: 0,

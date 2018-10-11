@@ -8,7 +8,7 @@ var states = {
             'So, who are you?'
         ])
         game.occupations.forEach((e, i) => {
-            term.writeLine('(' + i + 1 + ') ' + e.name + ' (' + e.difficulty + ')')
+            term.writeLine('(' + (i + 1) + ') ' + e.name + ' (' + e.difficulty + ')')
         })
         term.read(player, 'difficultySelected')
     },
@@ -48,11 +48,17 @@ var states = {
             var num = Number.parseInt(input)
         } catch {
             term.writeLine('Please enter an integer')
+            term.read(player, 'oxen')
+            return
         }
         var cost = game.items['oxen'].price * num
         if(player.money > cost) {
             player.inventory.oxen += num
             player.money -= cost
+        } else {
+            term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
+            term.read(player, 'oxen')
+            return
         }
         term.writeLine('How much food would you like to buy?')
         term.writeLine('It costs ' + game.items.food.price + ' per lb.')
@@ -60,3 +66,5 @@ var states = {
         //term.read(player, 'food')
     }
 }
+
+exports.states = states
