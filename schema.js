@@ -1,33 +1,20 @@
 var mongoose = require('mongoose')
-const game = require('./public/game.json')
-
-mongoose.connect(process.env.MONGODB_URI || require('./dev_db.json'))
+mongoose.connect(process.env.MONGODB_URI)
 
 var inventory = {
     oxen: Number,
-    food: Number,
-    clothing: Number,
     ammunition: Number,
-    wagon_wheel: Number,
-    wagon_axle: Number,
-    wagon_tongue: Number
+    food: Number,
+    axles: Number
 }
 
 var player = {
     sn: String,
-    nextURL: String,
-    alive: Boolean,
-    done: Boolean,
     name: String,
     turn: Number,
     miles: Number,
     money: Number,
-    huntPrompt: String,
-    location: {
-        name: String,
-        features: [String],
-        distance: Number
-    },
+    location: String,
     status: String,
     inprogress: [],
     history: [{
@@ -58,6 +45,13 @@ var player = {
         sn: String,
         inventory: inventory
     }]
+	trade: {
+		partnerSn : String,
+		sellItem : String,
+		sellAmount : Number,
+		buyItem : String,
+		buyAmount : Number
+	}
   }
 
 var playerSchema = new mongoose.Schema(player)
@@ -73,27 +67,7 @@ exports.newPlayer = async function newPlayer(properties={}) {
         sn = (Math.random() + 1).toString(36).substr(2, 6)
         count = await Player.count({sn: sn}).exec()
     } while(count)
-    var nplayer = new Player({
-        sn: sn, 
-        nextURL: '/' + sn + '/home',
-        location: game.locations[0],
-        inventory: {
-            oxen: 0,
-            food: 0,
-            clothing: 0,
-            ammunition: 0,
-            wagon_wheel: 0,
-            wagon_axle: 0,
-            wagon_tongue: 0
-        },
-        miles: 0,
-        alive: true,
-        done: false,
-        money: 0,
-        name: "",
-        status: "",
-        turn: 1
-    })
+    var nplayer = new Player({sn: sn})
     for (let p in properties) {
         nplayer[p] = properties[p]
     }
@@ -120,6 +94,23 @@ exports.modifyPlayer = async function modifyPlayer(sn, properties) {
         player[p] = properties[p]
     }
     player.save()
+}
+
+/**
+* Adds information about nearby players to the given player 
+*/
+exports.addNearby = async function (player) {
+	player.nearby = []
+	nearby = await Player.findAll({
+		location: {name: player.location.name}
+	})
+	for (let p of nearby) {
+		player.nearby.push({
+			name: p.name,
+			sn: p.sn,
+			inventory: p.inventory
+		})
+	}
 }
 
 
