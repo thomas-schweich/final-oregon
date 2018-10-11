@@ -47,7 +47,7 @@ var states = {
     'oxen': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
-        } catch {
+        } catch (e) {
             term.writeLine('Please enter an integer')
             term.read(player, 'oxen')
             return
@@ -120,7 +120,7 @@ var states = {
         if(player.money > cost) {
             player.inventory.ammunition += num
             player.money -= cost
-        } else {
+        } else {    
             term.writeLine('Insufficient funds. Type "0" if you do not wish to purchase any.')
             term.read(player, 'ammo')
             return
