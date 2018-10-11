@@ -23,6 +23,7 @@ var player = {
     miles: Number,
     money: Number,
     huntPrompt: String,
+    diseases: [String],
     location: {
         name: String,
         features: [String],
