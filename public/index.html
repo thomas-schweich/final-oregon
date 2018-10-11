@@ -72,9 +72,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="items in player.inventory">
-            <td>{{ player.inventory }}</td>
-            <td>{{ items }}</td>
+          <tr v-for="invItem in player.inventory">
+            <td>{{ invItem }}</td>
+            <td>{{ player.inventory[invItem] }}</td>
           </tr>
         </tbody>
       </table>
