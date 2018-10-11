@@ -250,26 +250,23 @@
             }
         }
     ],
-    "occupations": [{
-            "doctor": {
+    "occupations": [
+         {
                 "name": "Doctor",
                 "difficulty": "Easy",
                 "money": 1600
-            }
         },
         {
-            "carpenter": {
                 "name": "Carpenter",
                 "difficulty": "Medium",
                 "money": 800
-            }
+        
         },
         {
-            "farmer": {
                 "name": "Farmer",
                 "difficulty": "Hard",
                 "money": 400
-            }
         }
-    ]
+     ] 
+    
 }
