@@ -44,7 +44,7 @@ var player = {
         name: String,   
         sn: String,
         inventory: inventory
-    }]
+    }],
 	trade: {
 		partnerSn : String,
 		sellItem : String,
