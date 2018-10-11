@@ -1,7 +1,7 @@
 {
     "locations": [{
             "name": "Independence, MO",
-            "features": ["next", "general_store", "trade", "tavern" ],
+            "features": ["next", "general_store", "trade", "tavern"],
             "distance": 0
         },
         {
@@ -16,7 +16,7 @@
         },
         {
             "name": "Ft Kearney",
-            "features": ["next", "general_store", "trade", "tavern" ],
+            "features": ["next", "general_store", "trade", "tavern"],
             "distance": 304
         },
         {
@@ -109,6 +109,10 @@
         "trade": {
             "fun": "trade",
             "description": "Trade with other players"
+        },
+		"tavern": {
+            "fun": "tavern",
+            "description": "Go to a tavern"
         }
     },
     "items": {
