@@ -73,8 +73,8 @@
         </thead>
         <tbody>
           <tr v-for="items in player.inventory">
+            <td>{{ player.inventory }}</td>
             <td>{{ items }}</td>
-            <td>{{ player.inventory[items] }}</td>
           </tr>
         </tbody>
       </table>
@@ -94,7 +94,7 @@
             <td>{{ player.party[diseases] }}</td>
           </tr>
         </tbody>
-      </table> -->
+      </table>
     </div>
     <div class="page-contain white-text">
       <div class="roundscreen">

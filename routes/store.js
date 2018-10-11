@@ -25,11 +25,11 @@ var states = {
 		else if (input=="2") {
 			term.writeLines([
 				'What item would you like sell?',
-				'(1) Buy oxen',
-				'(2) Buy food',
-				'(3) Buy amunition',
-				'(4) Buy clothes',
-				'(5) Buy spare parts',
+				'(1) Sell oxen',
+				'(2) Sell food',
+				'(3) Sell amunition',
+				'(4) Sell clothes',
+				'(5) Sell spare parts',
 			])
 			term.read(player, 'sell')
 		}
@@ -251,9 +251,9 @@ var states = {
 		else if (input=="5"){
 			term.writeLines([
 				"What kind of wagon part would you like to sell",
-				"(1) Buy wagon wheel",
-				"(2) Buy wagon axle",
-				"(3) Buy wagon tongue"
+				"(1) Sell wagon wheel",
+				"(2) Sell wagon axle",
+				"(3) Sell wagon tongue"
 			])
 			term.read(player, "partSelectSell")
 		}
