@@ -4,6 +4,11 @@ const playerSchema = require('../schema.js')
 var states = {
     '': function(player, term, input) {
 		playerSchema.addNearby(player)
+		player.trade.partnerSn = ""
+		player.trade.sellItem = ""
+		player.trade.sellAmount = 0
+		player.trade.buyItem = ""
+		player.trade.buyAmount = 0
         term.writeLines([
 			'Which player would you like to trade with',
 			'Enter a players sn or enter "Leave" to exit'
