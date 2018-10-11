@@ -1,194 +1,125 @@
-const game = require('../public/game.json')
-const playerSchema = require('../schema.js')
+var mongoose = require('mongoose')
+const game = require('./public/game.json')
 
-var states = {
-    '': function(player, term, input) {
-		playerSchema.addNearby(player)
-        term.writeLines([
-			'Which player would you like to trade with',
-			'Enter a players sn or enter "Leave" to exit'
-		])
-		term.read(player, 'select')
-	},
-	'select' : function(player, term, input) {
-		if (input == "Leave") {
-			term.terminate(player)
-		}
-		else{
-			for (let index of player.nearby){
-				if (index.sn == input) {
-					player.trader.sn = input
-					term.writeLines([
-						'What would you like to give them',
-						'(1) oxen',
-						'(2) food',
-						'(3) ammunition',
-						'(4) clothes',
-						'(5) wagon_wheel',
-						'(6) wagon_axle',
-						'(7) wagon_tongue',
-						'(8) money'
-					])
-					term.read(player, 'sell')
-				}
-			}
-			term.writeLine("No player with that sn")
-			term.writeLine('Enter a valid sn or enter "Leave" to exit')
-			term.read("select")
-		}
-	},
-	'sell' : function(player, term, input) {
-		if (input == "1"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "oxen"
-			term.read("sellAmount")
-		}
-		else if (input =="2"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "food"
-			term.read("sellAmount")
-		}
-		else if (input =="3"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "ammunition"
-			term.read("sellAmount")
-		}
-		else if (input =="4"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "clothes"
-			term.read("sellAmount")
-		}
-		else if (input =="5"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "wagon_wheel"
-			term.read("sellAmount")
-		}
-		else if (input =="6"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "wagon_axle"
-			term.read("sellAmount")
-		}
-		else if (input =="7"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "wagon_tongue"
-			term.read("sellAmount")
-		}
-		else if (input =="8"){
-			term.writeLine("How much would you like to offer")
-			player.trade.sellItem = "money"
-			term.read("sellAmount")
-		}
-		else{
-			term.writeLine("Enter a valid number")
-			term.read('sell')
-		}
-	},
-	'sellAmount' : function(player, term, input) {
-		if (input == "Leave"){
-			term.terminate(player)
-		}
-		try {
-            var numberSold = Number.parseInt(input)
-        } catch (e) {
-            console.error(e)
-            term.writeLine('Invalid input. Please write an integer value and press enter or type "Leave" to exit.')
-            term.read(player, 'sellAmount')
-            return
-        }
-		sellItem = player.trade.sellItem
-		if (input>player.inventory[sellItem] && input>0){
-			term.writeLine("You do not have enough " + sellItem)
-			term.read('sellAmount')
-		}
-		else{
-			player.trade.sellAmount = input
-			term.writeLines([
-				'What would you like to buy from them',
-				'(1) oxen',
-				'(2) food',
-				'(3) ammunition',
-				'(4) clothes',
-				'(5) wagon_wheel',
-				'(6) wagon_axle',
-				'(7) wagon_tongue',
-				'(8) money'
-			])
-			term.read('buy')
-		}	
-	},
-	'buy' : function(player, term, input) {
-		if (input == "1"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "oxen"
-			term.read("buyAmount")
-		}
-		else if (input =="2"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "food"
-			term.read("buyAmount")
-		}
-		else if (input =="3"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "ammunition"
-			term.read("buyAmount")
-		}
-		else if (input =="4"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.sellItem = "clothes"
-			term.read("sellAmount")
-		}
-		else if (input =="5"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "wagon_wheel"
-			term.read("buyAmount")
-		}
-		else if (input =="6"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "wagon_axle"
-			term.read("buyAmount")
-		}
-		else if (input =="7"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "wagon_tongue"
-			term.read("buyAmount")
-		}
-		else if (input =="8"){
-			term.writeLine("How much would you like to buy from them")
-			player.trade.buyItem = "money"
-			term.read("buyAmount")
-		}
-		else{
-			term.writeLine("Enter a valid number")
-			term.read('buy')
-		}
-	},
-	'buyAmount' : function(player, term, input) {
-		if (input == "Leave"){
-			term.terminate(player)
-		}
-		try {
-            var numberSold = Number.parseInt(input)
-        } catch (e) {
-            console.error(e)
-            term.writeLine('Invalid input. Please write an integer value and press enter or type "Leave" to exit.')
-            term.read(player, 'buyAmount')
-            return
-        }
-		buyItem = player.trade.buyItem
-		partner = player.nearby.filter(function(v){
-			return v.sn == player.trade.partnerSn
-		})[0]
-		if (input>partner.inventory[buyItem] && input>0){
-			term.writeLine("They do not have enough " + sellItem)
-			term.read('buyAmount')
-		}
-		else{
-			player.trade.buyAmount = input
-			term.writeLine("Your offer has be sent")
-			//send offer
-			term.terminate(player)
-		}	
-	}
+mongoose.connect(process.env.MONGODB_URI || require('./dev_db.json'))
+
+var inventory = {
+    oxen: Number,
+    food: Number,
+    clothing: Number,
+    ammunition: Number,
+    wagon_wheel: Number,
+    wagon_axle: Number,
+    wagon_tongue: Number
 }
 
-exports.states = states
+var player = {
+    sn: String,
+    nextURL: String,
+    alive: Boolean,
+    done: Boolean,
+    name: String,
+    turn: Number,
+    miles: Number,
+    money: Number,
+    huntPrompt: String,
+    location: {
+        name: String,
+        features: [String],
+        distance: Number
+    },
+    status: String,
+    inprogress: [],
+    history: [{
+        turn: Number,
+        action: String,
+        info: String
+    }],
+    inventory: inventory,
+    party: [{
+        name: String,
+        diseases: [],
+        alive: Boolean
+    }],
+    offers: [{
+        name: String,
+        request: {
+            item: String,
+            amount: Number
+        },
+        reward: {
+            item: String,
+            amount: Number
+        },
+        sn: String
+    }],
+    nearby: [{
+        name: String,   
+        sn: String,
+        inventory: inventory
+    }]
+  }
+
+var playerSchema = new mongoose.Schema(player)
+var Player = mongoose.model('Player', playerSchema)
+exports.Player = Player
+
+/**
+ * Adds an empty player to the database, returning its unique Save Number
+ */
+exports.newPlayer = async function newPlayer(properties={}) {
+    var sn, count
+    do {
+        sn = (Math.random() + 1).toString(36).substr(2, 6)
+        count = await Player.count({sn: sn}).exec()
+    } while(count)
+    var nplayer = new Player({
+        sn: sn, 
+        nextURL: '/' + sn + '/home',
+        location: game.locations[0],
+        inventory: {
+            oxen: 0,
+            food: 0,
+            clothing: 0,
+            ammunition: 0,
+            wagon_wheel: 0,
+            wagon_axle: 0,
+            wagon_tongue: 0
+        },
+        miles: 0,
+        alive: true,
+        done: false,
+        money: 0,
+        name: "",
+        status: "",
+        turn: 1
+    })
+    for (let p in properties) {
+        nplayer[p] = properties[p]
+    }
+    nplayer.save()
+    return nplayer
+}
+
+/**
+ * Get a player by Save Number
+ * @param {String} sn 
+ */
+exports.getPlayer = async function getPlayer(sn) {
+    return await Player.findOne({sn: sn}).exec()
+}
+
+/**
+ * Modifies the player with save number sn
+ * Properties must be top-level
+ * @param {String} sn The player's Save Number
+ */
+exports.modifyPlayer = async function modifyPlayer(sn, properties) {
+    var player = await getPlayer(sn)
+    for(let p in properties) {
+        player[p] = properties[p]
+    }
+    player.save()
+}
+
+
