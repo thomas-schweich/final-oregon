@@ -87,7 +87,7 @@ var states = {
         term.read(player, 'clothing')
     },
 
-    'Clothing': function(player, term, input) {
+    'clothing': function(player, term, input) {
         try {
             var num = Number.parseInt(input)
         } catch {
@@ -105,7 +105,7 @@ var states = {
             return
         }
         term.writeLine('How much ammo would you like to buy?')
-        term.writeLine('It costs ' + game.items.ammo.price + ' per bullet.')
+        term.writeLine('It costs ' + game.items.ammunition.price + ' per bullet.')
         term.read(player, 'ammo')
     },
     'ammo': function(player, term, input) {
@@ -116,7 +116,7 @@ var states = {
             term.read(player, 'ammo')
             return
         }
-        var cost = game.items['ammo'].price * num
+        var cost = game.items['ammunition'].price * num
         if(player.money > cost) {
             player.inventory.ammunition += num
             player.money -= cost
